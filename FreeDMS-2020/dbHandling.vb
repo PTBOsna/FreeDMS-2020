@@ -10,27 +10,30 @@ Public Class dbHandling
     Public con As New OleDbConnection
     'DB-Standort-Daten
     Public dbName As String 'Name der DB 
-    Public Shared CurrDB As String ' Vollständiger Name mit Pfad
-    Public Shared sAppPath As String = System.AppDomain.CurrentDomain.BaseDirectory & "Daten\"
+    Public CurrDB As String ' Vollständiger Name mit Pfad
+    Public sAppPath As String = System.AppDomain.CurrentDomain.BaseDirectory & "Daten\"
 
 
     'Verwaltungsordner
-    Public Shared ArchivOrdner As String
-    Public Shared InputOrdner As String
-    Public Shared MailInputOrdner As String
-    Public Shared FlagArchivOrdner As Boolean
-    Public Shared FlagInputOrdner As Boolean
-    Public Shared SettingOutlookArchiv As String
-    Public Shared FlagMailInputOrdner As Boolean
-    Public Shared StartMandant As String
-    Public Shared FlagStartMandant As Boolean
-    Public Shared FlagAppPath As Boolean
-    Public Shared StEmpfaenger As String
-    Public Shared FlagStEmpfaenger As Boolean
-    Public Shared FlagOutlook As Boolean = False
-    Public Shared mailAbrufStart As Boolean = False
+    Public ArchivOrdner As String
+    Public InputOrdner As String
+    Public MailInputOrdner As String
+    Public FlagArchivOrdner As Boolean
+    Public FlagInputOrdner As Boolean
+    Public SettingOutlookArchiv As String
+    Public FlagMailInputOrdner As Boolean
+    Public StartMandant As String
+    Public FlagStartMandant As Boolean
+    Public FlagAppPath As Boolean
+    Public StEmpfaenger As String
+    Public FlagStEmpfaenger As Boolean
+    Public FlagOutlook As Boolean = False
+    Public mailAbrufStart As Boolean = False
     Dim OutlookNutzen As String = "nein"
     Dim MailAbruf As String = "nein"
+
+    'Provider
+    Public xmlProvider As String = System.AppDomain.CurrentDomain.BaseDirectory & "Daten\provider.xml"
 
     ''' <summary>
     ''' Prüfen, ob Programm vorhanden (insbes. MS-Access)
@@ -90,7 +93,6 @@ Public Class dbHandling
             ' Beginn eines Elements "Personen". Darin werden wir mehrere 
             ' Elemente "Person" unterbringen. 
             .WriteStartElement("settings")
-
             .WriteStartElement("setting") ' <Person 
             .WriteAttributeString("DBName", dbName)
             .WriteAttributeString("ArchivOrdner", ArchivOrdner)
@@ -140,9 +142,7 @@ Public Class dbHandling
 
         ' Es folgt das Auslesen der XML-Datei 
         With XMLReader
-
             Do While .Read ' Es sind noch Daten vorhanden 
-
                 ' Welche Art von Daten liegt an? 
                 Select Case .NodeType ' Ein Element 
                     Case System.Xml.XmlNodeType.Element
@@ -172,21 +172,59 @@ Public Class dbHandling
                                     Case "OpenMailStart"
                                         MailAbruf = .Value
                                 End Select
-
                             End While
-
                         End If
-
                 End Select
-
             Loop  ' Weiter nach Daten schauen 
-
             .Close()  ' XMLTextReader schließen 
             If MailAbruf = "ja" Then mailAbrufStart = True Else mailAbrufStart = False
             If OutlookNutzen = "ja" Then FlagOutlook = True Else FlagOutlook = False
+            CurrDB = sAppPath & dbName
             'MsgBox(ArchivOrdner & vbCrLf & PdfToText & vbCrLf & SettingOutlookArchiv & vbCrLf & MailInputOrdner & vbCrLf & currDB)
         End With
     End Sub
+    ''' <summary>
+    ''' Überprüfen der Settings und Eintrag in die entsprechenden globalen Variablen
+    ''' </summary>
+    Public Sub ChkSettings()
+
+        If Not String.IsNullOrEmpty(MailInputOrdner) Then FlagMailInputOrdner = True
+        If Not sAppPath.EndsWith("\") Then sAppPath = sAppPath & "\"
+        If Not Directory.Exists(ArchivOrdner) Or Not Directory.Exists(InputOrdner) Then
+            MsgBox("Die angegebenen Pfade existieren nicht." & vbCrLf & "Archiv und Inputordner werden zunächst unter '" & sAppPath & "ScanInput' und ...'Archiv\' eingerichtet." & vbCrLf & "Sie können diese unter 'SETTINGS' ändern.", vbSystemModal)
+            Directory.CreateDirectory(sAppPath & "Archiv\")
+            ArchivOrdner = sAppPath & "Archiv\"
+            ArchivOrdner = ArchivOrdner
+            Directory.CreateDirectory(sAppPath & "ScanInput\")
+            InputOrdner = sAppPath & "ScanInput\"
+            InputOrdner = InputOrdner
+        ElseIf Not Directory.Exists(InputOrdner) Then
+            MsgBox("Der angegebene Pfad existiert nicht." & vbCrLf & "Der  InputOrdner wird zunächst unter '" & sAppPath & "ScanInput' eingerichtet." & vbCrLf & "Sie können dies unter 'SETTINGS' ändern.")
+            Directory.CreateDirectory(sAppPath & "ScanInput\")
+            InputOrdner = sAppPath & "ScanInput\"
+            InputOrdner = InputOrdner
+        ElseIf Not Directory.Exists(ArchivOrdner) Then
+            MsgBox("Der angegebene Pfad existiert nicht." & vbCrLf & "Der  ArchivOrdner wird zunächst unter '" & sAppPath & "Archiv' eingerichtet." & vbCrLf & "Sie können dies unter 'SETTINGS' ändern.")
+            Directory.CreateDirectory(sAppPath & "Archiv\")
+            ArchivOrdner = sAppPath & "Archiv\"
+            ArchivOrdner = ArchivOrdner
+        End If
+        If Not ArchivOrdner.EndsWith("\") Then
+            ArchivOrdner = ArchivOrdner & "\"
+        End If
+        If Not InputOrdner.EndsWith("\") Then
+            InputOrdner = InputOrdner & "\"
+        End If
+        If String.IsNullOrEmpty(StEmpfaenger) Then
+            StEmpfaenger = "0"
+        End If
+        If String.IsNullOrEmpty(StartMandant) Then
+            StartMandant = "0"
+        End If
+
+        If MailAbruf.Contains("ja") Then mailAbrufStart = True
+    End Sub
+
 
     ''' <summary>
     ''' DB laden
