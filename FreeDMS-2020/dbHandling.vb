@@ -6,7 +6,7 @@ Imports System.Configuration
 Imports Tesseract
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
-Public Class dbHandling
+Public Class dbHandling : Inherits Form
     Public con As New OleDbConnection
     'DB-Standort-Daten
     Public dbName As String 'Name der DB 
@@ -34,7 +34,51 @@ Public Class dbHandling
 
     'Provider
     Public xmlProvider As String = System.AppDomain.CurrentDomain.BaseDirectory & "Daten\provider.xml"
+    Public Function ChekDB() As Boolean
+        If sAppPath = Nothing Then
+            sAppPath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Daten")
+        End If
 
+        Dim Files() As String = Directory.GetFiles(sAppPath, "FreeDMS*.mdb")
+        'je nach Anzahl der gefundenen Dateien handeln
+        Select Case Files.Length
+            Case 0 ' keine Startdatei vorhanden, also suchen
+                MyFileDialog("Bitte die Start-DB auswählen!")
+            Case 1  ' eine Startdatei vorhanden
+                If Path.GetFileName(Files(0)) = dbName Then
+                    ' MsgBox(Files(0))
+                    CurrDB = Files(0)
+                Else
+                    MyFileDialog("Bitte die Datenbank auswählen!")
+                    dbName = Path.GetFileName(CurrDB)
+                    sAppPath = Path.GetDirectoryName(CurrDB)
+                End If
+            Case > 1 'Mehrere DB-Dateien vorhanden: eine auswählen
+                MyFileDialog("Es sind mehrere Dateien vorhanden! Bitte die Start-DB auswählen!")
+            Case Else
+                MsgBox("Keine Datei vorhanden. Anwendung wird geschlossen")
+                Close()
+        End Select
+    End Function
+    ''' <summary>
+    ''' FileDialog für DB-Auswahl
+    ''' </summary>
+    ''' <param name="sTitel"></param>
+    Public Sub MyFileDialog(ByVal sTitel As String)
+        Dim openFileDialog1 = New OpenFileDialog()
+        With OpenFileDialog1
+            .Title = sTitel
+            .Filter = "FreeDMS* (FreeDMS*.mdb)|FreeDMS*.mdb"
+            .InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory
+            .FileName = ""
+            .ShowDialog()
+            If String.IsNullOrEmpty(.FileName) Then Exit Sub
+            CurrDB = .FileName
+            dbName = Path.GetFileName(.FileName)
+            My.Settings.LastDB = CurrDB
+        End With
+        XMLWriter()
+    End Sub
     ''' <summary>
     ''' Prüfen, ob Programm vorhanden (insbes. MS-Access)
     ''' </summary>
@@ -123,7 +167,7 @@ Public Class dbHandling
         Dim myPath As String = System.AppDomain.CurrentDomain.BaseDirectory 'Path.GetDirectoryName(CurrDB) & "\" 'CurrDB ist Pfad einschließlich '\Daten\
         Dim MyDB As String = Path.GetFileNameWithoutExtension(CurrDB)
         If String.IsNullOrEmpty(MyDB) Then
-            MyDB = "Nothing"
+            MyDB = Path.GetFileNameWithoutExtension(My.Settings.LastDB)
         End If
         'MsgBox(MyDB & vbCrLf & CurrDB & vbCrLf & Path.GetDirectoryName(CurrDB))
         'prüfen, ob im Ordner der Aktuellen DB (CurrDB) die xml-Datei vohanden ist, wenn nicht prüfen ob sie im Anwendungs-Verzeichnis ist. Sonst neu erstellen

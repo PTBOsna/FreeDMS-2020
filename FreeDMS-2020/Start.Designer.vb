@@ -47,17 +47,17 @@ Partial Class Start
         Dim ArchiviertLabel As System.Windows.Forms.Label
         Dim BeschreibungLabel As System.Windows.Forms.Label
         Dim AngelegtLabel As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Start))
         Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Start))
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -160,6 +160,8 @@ Partial Class Start
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.TxtCounter = New System.Windows.Forms.TextBox()
         Me.HostTextBox1 = New System.Windows.Forms.TextBox()
+        Me.ProviderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ProviderDataBase = New FreeDMS_2020.ProviderDataBase()
         Me.UserTextBox1 = New System.Windows.Forms.TextBox()
         Me.lblPostfach = New System.Windows.Forms.Label()
         Me.CbProviderAuswahl = New System.Windows.Forms.ComboBox()
@@ -183,31 +185,35 @@ Partial Class Start
         Me.PanelAtt = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lbAtt = New System.Windows.Forms.ListBox()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButtonExit = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton9 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButtonScan = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton12 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonScanInput = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton14 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButtonMandanten = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonAkten = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonVorgaenge = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonDokumente = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButtonWv = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonNoteNeu = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonVorlagen = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButtonDatSuche = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonSchnellSuche = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButtonDelDoc = New System.Windows.Forms.ToolStripButton()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
+        Me.DokumenteSQLDataGridView = New System.Windows.Forms.DataGridView()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MandantDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AkteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VorgangDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokumentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.KommentarDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BetreffDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokDatumDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AufgenommenDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GeaendertDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IstAnlageDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.AnlagenIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InhaltOCRDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpfängerDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AblageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ArtDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BearbVermerkDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokumenteSQLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me._FreeDMS_StartDBDataSet = New FreeDMS_2020._FreeDMS_StartDBDataSet()
+        Me.Panel13 = New System.Windows.Forms.Panel()
+        Me.Panel14 = New System.Windows.Forms.Panel()
+        Me.LbInfo = New System.Windows.Forms.Label()
+        Me.LbJournalCount = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.DateiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NeuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -255,38 +261,81 @@ Partial Class Start
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.InfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestFormToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.ProviderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ProviderDataBase = New FreeDMS_2020.ProviderDataBase()
-        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.DokumenteSQLDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Panel13 = New System.Windows.Forms.Panel()
-        Me.Panel14 = New System.Windows.Forms.Panel()
-        Me.LbInfo = New System.Windows.Forms.Label()
-        Me.LbJournalCount = New System.Windows.Forms.Label()
-        Me._FreeDMS_StartDBDataSet = New FreeDMS_2020._FreeDMS_StartDBDataSet()
-        Me.DokumenteSQLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButtonExit = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton9 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButtonScan = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton12 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonScanInput = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton14 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButtonMandanten = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonAkten = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonVorgaenge = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonDokumente = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButtonWv = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonNoteNeu = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonVorlagen = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButtonDatSuche = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonSchnellSuche = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButtonDelDoc = New System.Windows.Forms.ToolStripButton()
         Me.DokumenteSQLTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.DokumenteSQLTableAdapter()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MandantDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AkteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VorgangDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DokumentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.KommentarDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BetreffDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DokDatumDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AufgenommenDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GeaendertDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IstAnlageDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.AnlagenIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InhaltOCRDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpfängerDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AblageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ArtDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BearbVermerkDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DokNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotizBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.NotizTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.notizTableAdapter()
+        Me.IdDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AkteDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VorgangDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokumentDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ErstelltDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TitelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotizDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WvdatumDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotizBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.IdDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AkteDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VorgangDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokumentDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ErstelltDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TitelDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotizDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WvdatumDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AblageBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AblageTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AblageTableAdapter()
+        Me.TableAdapterManager = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.TableAdapterManager()
+        Me.AktenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AktenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AktenTableAdapter()
+        Me.AnschriftenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AnschriftenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnschriftenTableAdapter()
+        Me.DokumenteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DokumenteTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.DokumenteTableAdapter()
+        Me.MandantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MandantTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.MandantTableAdapter()
+        Me.SqlVorgangAkteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SqlVorgangAkteTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.sqlVorgangAkteTableAdapter()
+        Me.StatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.StatusTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.StatusTableAdapter()
+        Me.TypBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TypTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.TypTableAdapter()
+        Me.VorgaengeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VorgaengeTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.VorgaengeTableAdapter()
+        Me.VorlagenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VorlagenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.VorlagenTableAdapter()
+        Me.WiedervorlageBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.WiedervorlageTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.wiedervorlageTableAdapter()
+        Me.AnlagenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AnlagenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnlagenTableAdapter()
+        Me.AnlagenSQLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AnlagenSQLTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnlagenSQLTableAdapter()
+        Me.AnschriftenBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         DokumentLabel = New System.Windows.Forms.Label()
         BetreffLabel = New System.Windows.Forms.Label()
         BetragLabel = New System.Windows.Forms.Label()
@@ -344,6 +393,8 @@ Partial Class Start
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel11.SuspendLayout()
         Me.Panel12.SuspendLayout()
+        CType(Me.ProviderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProviderDataBase, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GVEmails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMailKopf.SuspendLayout()
         Me.PanelMail.SuspendLayout()
@@ -351,16 +402,30 @@ Partial Class Start
         Me.Panel15.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelAtt.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
-        CType(Me.ProviderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ProviderDataBase, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.DokumenteSQLDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel14.SuspendLayout()
-        CType(Me._FreeDMS_StartDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DokumenteSQLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me._FreeDMS_StartDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel14.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
+        CType(Me.NotizBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NotizBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AblageBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AktenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AnschriftenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DokumenteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MandantBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SqlVorgangAkteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.StatusBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TypBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VorgaengeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VorlagenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WiedervorlageBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AnlagenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AnlagenSQLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AnschriftenBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DokumentLabel
@@ -688,16 +753,18 @@ Partial Class Start
         'DocNotizDataGridView
         '
         Me.DocNotizDataGridView.AllowUserToAddRows = False
+        Me.DocNotizDataGridView.AutoGenerateColumns = False
         Me.DocNotizDataGridView.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DocNotizDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DocNotizDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1})
+        Me.DocNotizDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.IdDataGridViewTextBoxColumn2, Me.AkteDataGridViewTextBoxColumn2, Me.VorgangDataGridViewTextBoxColumn2, Me.DokumentDataGridViewTextBoxColumn2, Me.ErstelltDataGridViewTextBoxColumn1, Me.TitelDataGridViewTextBoxColumn1, Me.NotizDataGridViewTextBoxColumn1, Me.WvdatumDataGridViewTextBoxColumn1})
+        Me.DocNotizDataGridView.DataSource = Me.NotizBindingSource1
         Me.DocNotizDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DocNotizDataGridView.Location = New System.Drawing.Point(0, 26)
         Me.DocNotizDataGridView.MultiSelect = False
         Me.DocNotizDataGridView.Name = "DocNotizDataGridView"
         Me.DocNotizDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DocNotizDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DocNotizDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle14
         Me.DocNotizDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DocNotizDataGridView.Size = New System.Drawing.Size(444, 118)
         Me.DocNotizDataGridView.TabIndex = 1
@@ -706,9 +773,9 @@ Partial Class Start
         '
         Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "erstellt"
-        DataGridViewCellStyle11.Format = "d"
-        DataGridViewCellStyle11.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle13.Format = "d"
+        DataGridViewCellStyle13.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle13
         Me.DataGridViewTextBoxColumn1.HeaderText = "Vom"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ToolTipText = "Maus-Klick für Details"
@@ -881,8 +948,8 @@ Partial Class Start
         '
         Me.DokumenteDataGridView.AllowUserToAddRows = False
         Me.DokumenteDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.DokumenteDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.DokumenteDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.DokumenteDataGridView.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DokumenteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.TableLayoutPanel1.SetColumnSpan(Me.DokumenteDataGridView, 2)
@@ -891,8 +958,8 @@ Partial Class Start
         Me.DokumenteDataGridView.MultiSelect = False
         Me.DokumenteDataGridView.Name = "DokumenteDataGridView"
         Me.DokumenteDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DokumenteDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DokumenteDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle12
         Me.TableLayoutPanel1.SetRowSpan(Me.DokumenteDataGridView, 3)
         Me.DokumenteDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DokumenteDataGridView.Size = New System.Drawing.Size(372, 369)
@@ -1060,6 +1127,7 @@ Partial Class Start
         '
         'AbsenderTextBox
         '
+        Me.AbsenderTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnschriftenBindingSource, "Name_", True))
         Me.AbsenderTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AbsenderTextBox.Location = New System.Drawing.Point(110, 122)
         Me.AbsenderTextBox.Name = "AbsenderTextBox"
@@ -1069,6 +1137,7 @@ Partial Class Start
         '
         'EmpfaengerTextBox
         '
+        Me.EmpfaengerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnschriftenBindingSource1, "Name_", True))
         Me.EmpfaengerTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.EmpfaengerTextBox.Location = New System.Drawing.Point(110, 148)
         Me.EmpfaengerTextBox.Name = "EmpfaengerTextBox"
@@ -1375,6 +1444,7 @@ Partial Class Start
         '
         'Panel19
         '
+        Me.Panel19.AutoScroll = True
         Me.Panel19.BackColor = System.Drawing.Color.SteelBlue
         Me.TableLayoutPanel1.SetColumnSpan(Me.Panel19, 2)
         Me.Panel19.Controls.Add(Me.Label4)
@@ -1400,18 +1470,20 @@ Partial Class Start
         'NotizDataGridView
         '
         Me.NotizDataGridView.AllowUserToAddRows = False
+        Me.NotizDataGridView.AutoGenerateColumns = False
         Me.NotizDataGridView.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.NotizDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.NotizDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.erstellt})
+        Me.NotizDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.erstellt, Me.IdDataGridViewTextBoxColumn1, Me.AkteDataGridViewTextBoxColumn1, Me.VorgangDataGridViewTextBoxColumn1, Me.DokumentDataGridViewTextBoxColumn1, Me.ErstelltDataGridViewTextBoxColumn, Me.TitelDataGridViewTextBoxColumn, Me.NotizDataGridViewTextBoxColumn, Me.WvdatumDataGridViewTextBoxColumn})
+        Me.NotizDataGridView.DataSource = Me.NotizBindingSource
         Me.NotizDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.NotizDataGridView.Location = New System.Drawing.Point(0, 2)
+        Me.NotizDataGridView.Location = New System.Drawing.Point(0, 32)
         Me.NotizDataGridView.MultiSelect = False
         Me.NotizDataGridView.Name = "NotizDataGridView"
         Me.NotizDataGridView.RowHeadersVisible = False
         DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NotizDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle16
         Me.NotizDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.NotizDataGridView.Size = New System.Drawing.Size(372, 244)
+        Me.NotizDataGridView.Size = New System.Drawing.Size(372, 214)
         Me.NotizDataGridView.TabIndex = 26
         '
         'erstellt
@@ -1457,9 +1529,12 @@ Partial Class Start
         Me.TreeView1.BackColor = System.Drawing.Color.LightSteelBlue
         Me.TableLayoutPanel1.SetColumnSpan(Me.TreeView1, 2)
         Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TreeView1.ImageIndex = 0
+        Me.TreeView1.ImageList = Me.ImageList3
         Me.TreeView1.Location = New System.Drawing.Point(3, 156)
         Me.TreeView1.Name = "TreeView1"
         Me.TableLayoutPanel1.SetRowSpan(Me.TreeView1, 2)
+        Me.TreeView1.SelectedImageIndex = 0
         Me.TreeView1.ShowRootLines = False
         Me.TreeView1.Size = New System.Drawing.Size(344, 291)
         Me.TreeView1.TabIndex = 2
@@ -1619,7 +1694,7 @@ Partial Class Start
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 503.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 504.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.Panel11, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Panel12, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.GVEmails, 0, 2)
@@ -1756,6 +1831,16 @@ Partial Class Start
         Me.HostTextBox1.TabIndex = 28
         Me.HostTextBox1.Text = "Provider"
         '
+        'ProviderBindingSource
+        '
+        Me.ProviderBindingSource.DataMember = "Provider"
+        Me.ProviderBindingSource.DataSource = Me.ProviderDataBase
+        '
+        'ProviderDataBase
+        '
+        Me.ProviderDataBase.DataSetName = "ProviderDataBase"
+        Me.ProviderDataBase.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'UserTextBox1
         '
         Me.UserTextBox1.BackColor = System.Drawing.Color.LightSteelBlue
@@ -1844,7 +1929,7 @@ Partial Class Start
         Me.PanelMailKopf.Location = New System.Drawing.Point(379, 3)
         Me.PanelMailKopf.Name = "PanelMailKopf"
         Me.TableLayoutPanel2.SetRowSpan(Me.PanelMailKopf, 2)
-        Me.PanelMailKopf.Size = New System.Drawing.Size(559, 144)
+        Me.PanelMailKopf.Size = New System.Drawing.Size(558, 144)
         Me.PanelMailKopf.TabIndex = 20
         '
         'PanelMail
@@ -1925,7 +2010,7 @@ Partial Class Start
         Me.Panel15.Location = New System.Drawing.Point(379, 153)
         Me.Panel15.Name = "Panel15"
         Me.TableLayoutPanel2.SetRowSpan(Me.Panel15, 2)
-        Me.Panel15.Size = New System.Drawing.Size(559, 412)
+        Me.Panel15.Size = New System.Drawing.Size(558, 412)
         Me.Panel15.TabIndex = 22
         '
         'PictureBox1
@@ -1950,10 +2035,10 @@ Partial Class Start
         '
         Me.LVMailInput.BackColor = System.Drawing.Color.MistyRose
         Me.LVMailInput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LVMailInput.Location = New System.Drawing.Point(944, 153)
+        Me.LVMailInput.Location = New System.Drawing.Point(943, 153)
         Me.LVMailInput.Name = "LVMailInput"
         Me.TableLayoutPanel2.SetRowSpan(Me.LVMailInput, 2)
-        Me.LVMailInput.Size = New System.Drawing.Size(498, 412)
+        Me.LVMailInput.Size = New System.Drawing.Size(499, 412)
         Me.LVMailInput.TabIndex = 24
         Me.LVMailInput.UseCompatibleStateImageBehavior = False
         '
@@ -1965,7 +2050,7 @@ Partial Class Start
         Me.PanelAtt.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelAtt.Location = New System.Drawing.Point(379, 571)
         Me.PanelAtt.Name = "PanelAtt"
-        Me.PanelAtt.Size = New System.Drawing.Size(559, 149)
+        Me.PanelAtt.Size = New System.Drawing.Size(558, 149)
         Me.PanelAtt.TabIndex = 21
         '
         'Label3
@@ -1985,223 +2070,222 @@ Partial Class Start
         Me.lbAtt.FormattingEnabled = True
         Me.lbAtt.Location = New System.Drawing.Point(74, 63)
         Me.lbAtt.Name = "lbAtt"
-        Me.lbAtt.Size = New System.Drawing.Size(413, 30)
+        Me.lbAtt.Size = New System.Drawing.Size(412, 30)
         Me.lbAtt.TabIndex = 2
         '
-        'ToolStrip1
+        'TabPage3
         '
-        Me.ToolStrip1.AllowDrop = True
-        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(44, 44)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonExit, Me.ToolStripButton9, Me.ToolStripSeparator14, Me.ToolStripButtonScan, Me.ToolStripSeparator13, Me.ToolStripButton12, Me.ToolStripButtonScanInput, Me.ToolStripButton14, Me.ToolStripSeparator1, Me.ToolStripButtonMandanten, Me.ToolStripButtonAkten, Me.ToolStripButtonVorgaenge, Me.ToolStripButtonDokumente, Me.ToolStripLabel2, Me.ToolStripSeparator11, Me.ToolStripButtonWv, Me.ToolStripButtonNoteNeu, Me.ToolStripButton1, Me.ToolStripButtonVorlagen, Me.ToolStripSeparator15, Me.ToolStripButtonDatSuche, Me.ToolStripButtonSchnellSuche, Me.ToolStripSeparator8, Me.ToolStripButtonDelDoc})
-        Me.ToolStrip1.Location = New System.Drawing.Point(3, 24)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(839, 51)
-        Me.ToolStrip1.TabIndex = 8
+        Me.TabPage3.Controls.Add(Me.TableLayoutPanel3)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(1451, 729)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Journal"
+        Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'ToolStripButtonExit
+        'TableLayoutPanel3
         '
-        Me.ToolStripButtonExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonExit.Image = CType(resources.GetObject("ToolStripButtonExit.Image"), System.Drawing.Image)
-        Me.ToolStripButtonExit.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonExit.Name = "ToolStripButtonExit"
-        Me.ToolStripButtonExit.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonExit.Text = "Programm beenden."
-        Me.ToolStripButtonExit.ToolTipText = "FreeDMS beenden"
+        Me.TableLayoutPanel3.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.TableLayoutPanel3.ColumnCount = 2
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95.79946!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.200542!))
+        Me.TableLayoutPanel3.Controls.Add(Me.DokumenteSQLDataGridView, 0, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.Panel13, 0, 2)
+        Me.TableLayoutPanel3.Controls.Add(Me.Panel14, 0, 0)
+        Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
+        Me.TableLayoutPanel3.RowCount = 3
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.581699!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.4183!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 117.0!))
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1451, 729)
+        Me.TableLayoutPanel3.TabIndex = 1
         '
-        'ToolStripButton9
+        'DokumenteSQLDataGridView
         '
-        Me.ToolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton9.Image = CType(resources.GetObject("ToolStripButton9.Image"), System.Drawing.Image)
-        Me.ToolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton9.Name = "ToolStripButton9"
-        Me.ToolStripButton9.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButton9.Text = "Refresh - Neu laden"
-        Me.ToolStripButton9.ToolTipText = "Refresh"
+        Me.DokumenteSQLDataGridView.AllowUserToAddRows = False
+        Me.DokumenteSQLDataGridView.AllowUserToOrderColumns = True
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.DokumenteSQLDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle20
+        Me.DokumenteSQLDataGridView.AutoGenerateColumns = False
+        Me.DokumenteSQLDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DokumenteSQLDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.MandantDataGridViewTextBoxColumn, Me.AkteDataGridViewTextBoxColumn, Me.VorgangDataGridViewTextBoxColumn, Me.DokumentDataGridViewTextBoxColumn, Me.KommentarDataGridViewTextBoxColumn, Me.BetreffDataGridViewTextBoxColumn, Me.DokDatumDataGridViewTextBoxColumn, Me.AufgenommenDataGridViewTextBoxColumn, Me.GeaendertDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.IstAnlageDataGridViewCheckBoxColumn, Me.AnlagenIDDataGridViewTextBoxColumn, Me.InhaltOCRDataGridViewTextBoxColumn, Me.EmpfängerDataGridViewTextBoxColumn, Me.AblageDataGridViewTextBoxColumn, Me.ArtDataGridViewTextBoxColumn, Me.StatusDataGridViewTextBoxColumn, Me.BearbVermerkDataGridViewTextBoxColumn, Me.DokNameDataGridViewTextBoxColumn})
+        Me.DokumenteSQLDataGridView.DataSource = Me.DokumenteSQLBindingSource
+        Me.DokumenteSQLDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DokumenteSQLDataGridView.Location = New System.Drawing.Point(3, 49)
+        Me.DokumenteSQLDataGridView.Name = "DokumenteSQLDataGridView"
+        Me.DokumenteSQLDataGridView.RowHeadersVisible = False
+        Me.DokumenteSQLDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DokumenteSQLDataGridView.Size = New System.Drawing.Size(1384, 559)
+        Me.DokumenteSQLDataGridView.TabIndex = 0
         '
-        'ToolStripSeparator14
+        'IdDataGridViewTextBoxColumn
         '
-        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
-        Me.ToolStripSeparator14.Size = New System.Drawing.Size(6, 51)
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonScan
+        'MandantDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonScan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonScan.Image = CType(resources.GetObject("ToolStripButtonScan.Image"), System.Drawing.Image)
-        Me.ToolStripButtonScan.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonScan.Name = "ToolStripButtonScan"
-        Me.ToolStripButtonScan.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonScan.Text = "Dokument scannen"
+        Me.MandantDataGridViewTextBoxColumn.DataPropertyName = "Mandant"
+        Me.MandantDataGridViewTextBoxColumn.HeaderText = "Mandant"
+        Me.MandantDataGridViewTextBoxColumn.Name = "MandantDataGridViewTextBoxColumn"
         '
-        'ToolStripSeparator13
+        'AkteDataGridViewTextBoxColumn
         '
-        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        Me.ToolStripSeparator13.Size = New System.Drawing.Size(6, 51)
+        Me.AkteDataGridViewTextBoxColumn.DataPropertyName = "Akte"
+        Me.AkteDataGridViewTextBoxColumn.HeaderText = "Akte"
+        Me.AkteDataGridViewTextBoxColumn.Name = "AkteDataGridViewTextBoxColumn"
         '
-        'ToolStripButton12
+        'VorgangDataGridViewTextBoxColumn
         '
-        Me.ToolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton12.Enabled = False
-        Me.ToolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton12.Name = "ToolStripButton12"
-        Me.ToolStripButton12.Size = New System.Drawing.Size(23, 48)
-        Me.ToolStripButton12.Text = "ToolStripButton12"
+        Me.VorgangDataGridViewTextBoxColumn.DataPropertyName = "Vorgang"
+        Me.VorgangDataGridViewTextBoxColumn.HeaderText = "Vorgang"
+        Me.VorgangDataGridViewTextBoxColumn.Name = "VorgangDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonScanInput
+        'DokumentDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonScanInput.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonScanInput.Image = CType(resources.GetObject("ToolStripButtonScanInput.Image"), System.Drawing.Image)
-        Me.ToolStripButtonScanInput.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonScanInput.Name = "ToolStripButtonScanInput"
-        Me.ToolStripButtonScanInput.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonScanInput.Text = "Dokumente aus Input-Ordner einlesen"
-        Me.ToolStripButtonScanInput.ToolTipText = "Dokumente archivieren"
+        Me.DokumentDataGridViewTextBoxColumn.DataPropertyName = "Dokument"
+        Me.DokumentDataGridViewTextBoxColumn.HeaderText = "Dokument"
+        Me.DokumentDataGridViewTextBoxColumn.Name = "DokumentDataGridViewTextBoxColumn"
         '
-        'ToolStripButton14
+        'KommentarDataGridViewTextBoxColumn
         '
-        Me.ToolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton14.Image = CType(resources.GetObject("ToolStripButton14.Image"), System.Drawing.Image)
-        Me.ToolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton14.Name = "ToolStripButton14"
-        Me.ToolStripButton14.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButton14.Text = "ToolStripButton14"
-        Me.ToolStripButton14.ToolTipText = "Neuer Datensatz ohne verknüpftes Dokument"
+        Me.KommentarDataGridViewTextBoxColumn.DataPropertyName = "Kommentar"
+        Me.KommentarDataGridViewTextBoxColumn.HeaderText = "Kommentar"
+        Me.KommentarDataGridViewTextBoxColumn.Name = "KommentarDataGridViewTextBoxColumn"
         '
-        'ToolStripSeparator1
+        'BetreffDataGridViewTextBoxColumn
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 51)
+        Me.BetreffDataGridViewTextBoxColumn.DataPropertyName = "Betreff"
+        Me.BetreffDataGridViewTextBoxColumn.HeaderText = "Betreff"
+        Me.BetreffDataGridViewTextBoxColumn.Name = "BetreffDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonMandanten
+        'DokDatumDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonMandanten.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonMandanten.Image = CType(resources.GetObject("ToolStripButtonMandanten.Image"), System.Drawing.Image)
-        Me.ToolStripButtonMandanten.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonMandanten.Name = "ToolStripButtonMandanten"
-        Me.ToolStripButtonMandanten.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonMandanten.Text = "ToolStripButton3"
-        Me.ToolStripButtonMandanten.ToolTipText = "Bereiche/Mandanten anzeigen"
+        Me.DokDatumDataGridViewTextBoxColumn.DataPropertyName = "DokDatum"
+        Me.DokDatumDataGridViewTextBoxColumn.HeaderText = "DokDatum"
+        Me.DokDatumDataGridViewTextBoxColumn.Name = "DokDatumDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonAkten
+        'AufgenommenDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonAkten.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonAkten.Image = CType(resources.GetObject("ToolStripButtonAkten.Image"), System.Drawing.Image)
-        Me.ToolStripButtonAkten.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonAkten.Name = "ToolStripButtonAkten"
-        Me.ToolStripButtonAkten.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonAkten.Text = "ToolStripButton5"
-        Me.ToolStripButtonAkten.ToolTipText = "Aktenliste anzeigen"
+        Me.AufgenommenDataGridViewTextBoxColumn.DataPropertyName = "Aufgenommen"
+        Me.AufgenommenDataGridViewTextBoxColumn.HeaderText = "Aufgenommen"
+        Me.AufgenommenDataGridViewTextBoxColumn.Name = "AufgenommenDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonVorgaenge
+        'GeaendertDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonVorgaenge.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonVorgaenge.Image = CType(resources.GetObject("ToolStripButtonVorgaenge.Image"), System.Drawing.Image)
-        Me.ToolStripButtonVorgaenge.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonVorgaenge.Name = "ToolStripButtonVorgaenge"
-        Me.ToolStripButtonVorgaenge.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonVorgaenge.Text = "ToolStripButton6"
-        Me.ToolStripButtonVorgaenge.ToolTipText = "Ordnerliste anzeigen"
+        Me.GeaendertDataGridViewTextBoxColumn.DataPropertyName = "Geaendert"
+        Me.GeaendertDataGridViewTextBoxColumn.HeaderText = "Geaendert"
+        Me.GeaendertDataGridViewTextBoxColumn.Name = "GeaendertDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonDokumente
+        'NameDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonDokumente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonDokumente.Image = CType(resources.GetObject("ToolStripButtonDokumente.Image"), System.Drawing.Image)
-        Me.ToolStripButtonDokumente.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonDokumente.Name = "ToolStripButtonDokumente"
-        Me.ToolStripButtonDokumente.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonDokumente.Text = "ToolStripButton7"
-        Me.ToolStripButtonDokumente.ToolTipText = "Dokumentenliste anzeigen"
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "Name_"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name_"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
         '
-        'ToolStripLabel2
+        'IstAnlageDataGridViewCheckBoxColumn
         '
-        Me.ToolStripLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(0, 48)
-        Me.ToolStripLabel2.Text = "Archiv"
-        Me.ToolStripLabel2.ToolTipText = "Archiv Vorgänge"
+        Me.IstAnlageDataGridViewCheckBoxColumn.DataPropertyName = "istAnlage"
+        Me.IstAnlageDataGridViewCheckBoxColumn.HeaderText = "istAnlage"
+        Me.IstAnlageDataGridViewCheckBoxColumn.Name = "IstAnlageDataGridViewCheckBoxColumn"
         '
-        'ToolStripSeparator11
+        'AnlagenIDDataGridViewTextBoxColumn
         '
-        Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
-        Me.ToolStripSeparator11.Size = New System.Drawing.Size(6, 51)
+        Me.AnlagenIDDataGridViewTextBoxColumn.DataPropertyName = "AnlagenID"
+        Me.AnlagenIDDataGridViewTextBoxColumn.HeaderText = "AnlagenID"
+        Me.AnlagenIDDataGridViewTextBoxColumn.Name = "AnlagenIDDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonWv
+        'InhaltOCRDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonWv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonWv.Image = CType(resources.GetObject("ToolStripButtonWv.Image"), System.Drawing.Image)
-        Me.ToolStripButtonWv.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonWv.Name = "ToolStripButtonWv"
-        Me.ToolStripButtonWv.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonWv.Text = "ToolStripButton2"
-        Me.ToolStripButtonWv.ToolTipText = "Wiedervorlage"
+        Me.InhaltOCRDataGridViewTextBoxColumn.DataPropertyName = "InhaltOCR"
+        Me.InhaltOCRDataGridViewTextBoxColumn.HeaderText = "InhaltOCR"
+        Me.InhaltOCRDataGridViewTextBoxColumn.Name = "InhaltOCRDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonNoteNeu
+        'EmpfängerDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonNoteNeu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonNoteNeu.Image = CType(resources.GetObject("ToolStripButtonNoteNeu.Image"), System.Drawing.Image)
-        Me.ToolStripButtonNoteNeu.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonNoteNeu.Name = "ToolStripButtonNoteNeu"
-        Me.ToolStripButtonNoteNeu.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonNoteNeu.Text = "Neue Notiz"
+        Me.EmpfängerDataGridViewTextBoxColumn.DataPropertyName = "Empfänger"
+        Me.EmpfängerDataGridViewTextBoxColumn.HeaderText = "Empfänger"
+        Me.EmpfängerDataGridViewTextBoxColumn.Name = "EmpfängerDataGridViewTextBoxColumn"
         '
-        'ToolStripButton1
+        'AblageDataGridViewTextBoxColumn
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButton1.Text = "Name/Anschrift neu"
+        Me.AblageDataGridViewTextBoxColumn.DataPropertyName = "Ablage"
+        Me.AblageDataGridViewTextBoxColumn.HeaderText = "Ablage"
+        Me.AblageDataGridViewTextBoxColumn.Name = "AblageDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonVorlagen
+        'ArtDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonVorlagen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonVorlagen.Image = CType(resources.GetObject("ToolStripButtonVorlagen.Image"), System.Drawing.Image)
-        Me.ToolStripButtonVorlagen.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonVorlagen.Name = "ToolStripButtonVorlagen"
-        Me.ToolStripButtonVorlagen.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonVorlagen.Text = "ToolStripButton9"
-        Me.ToolStripButtonVorlagen.ToolTipText = "Vorlagen erstellen"
+        Me.ArtDataGridViewTextBoxColumn.DataPropertyName = "Art"
+        Me.ArtDataGridViewTextBoxColumn.HeaderText = "Art"
+        Me.ArtDataGridViewTextBoxColumn.Name = "ArtDataGridViewTextBoxColumn"
         '
-        'ToolStripSeparator15
+        'StatusDataGridViewTextBoxColumn
         '
-        Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
-        Me.ToolStripSeparator15.Size = New System.Drawing.Size(6, 51)
+        Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "Status"
+        Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
+        Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonDatSuche
+        'BearbVermerkDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonDatSuche.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonDatSuche.Image = CType(resources.GetObject("ToolStripButtonDatSuche.Image"), System.Drawing.Image)
-        Me.ToolStripButtonDatSuche.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonDatSuche.Name = "ToolStripButtonDatSuche"
-        Me.ToolStripButtonDatSuche.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonDatSuche.Text = "Heute aufgenommen"
+        Me.BearbVermerkDataGridViewTextBoxColumn.DataPropertyName = "BearbVermerk"
+        Me.BearbVermerkDataGridViewTextBoxColumn.HeaderText = "BearbVermerk"
+        Me.BearbVermerkDataGridViewTextBoxColumn.Name = "BearbVermerkDataGridViewTextBoxColumn"
         '
-        'ToolStripButtonSchnellSuche
+        'DokNameDataGridViewTextBoxColumn
         '
-        Me.ToolStripButtonSchnellSuche.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonSchnellSuche.Image = CType(resources.GetObject("ToolStripButtonSchnellSuche.Image"), System.Drawing.Image)
-        Me.ToolStripButtonSchnellSuche.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonSchnellSuche.Name = "ToolStripButtonSchnellSuche"
-        Me.ToolStripButtonSchnellSuche.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonSchnellSuche.Text = "Schnellsuche"
-        Me.ToolStripButtonSchnellSuche.ToolTipText = "Schnellsuche"
+        Me.DokNameDataGridViewTextBoxColumn.DataPropertyName = "DokName"
+        Me.DokNameDataGridViewTextBoxColumn.HeaderText = "DokName"
+        Me.DokNameDataGridViewTextBoxColumn.Name = "DokNameDataGridViewTextBoxColumn"
         '
-        'ToolStripSeparator8
+        'DokumenteSQLBindingSource
         '
-        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(6, 51)
+        Me.DokumenteSQLBindingSource.DataMember = "DokumenteSQL"
+        Me.DokumenteSQLBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
-        'ToolStripButtonDelDoc
+        '_FreeDMS_StartDBDataSet
         '
-        Me.ToolStripButtonDelDoc.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonDelDoc.Image = CType(resources.GetObject("ToolStripButtonDelDoc.Image"), System.Drawing.Image)
-        Me.ToolStripButtonDelDoc.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonDelDoc.Name = "ToolStripButtonDelDoc"
-        Me.ToolStripButtonDelDoc.Size = New System.Drawing.Size(48, 48)
-        Me.ToolStripButtonDelDoc.Tag = ""
-        Me.ToolStripButtonDelDoc.Text = "ToolStripButton14"
-        Me.ToolStripButtonDelDoc.ToolTipText = "Aktuellen Datensatz löschen"
+        Me._FreeDMS_StartDBDataSet.DataSetName = "_FreeDMS_StartDBDataSet"
+        Me._FreeDMS_StartDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Panel13
+        '
+        Me.Panel13.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Panel13.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel13.Location = New System.Drawing.Point(3, 614)
+        Me.Panel13.Name = "Panel13"
+        Me.Panel13.Size = New System.Drawing.Size(1384, 112)
+        Me.Panel13.TabIndex = 1
+        '
+        'Panel14
+        '
+        Me.Panel14.Controls.Add(Me.LbInfo)
+        Me.Panel14.Controls.Add(Me.LbJournalCount)
+        Me.Panel14.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel14.Location = New System.Drawing.Point(3, 3)
+        Me.Panel14.Name = "Panel14"
+        Me.Panel14.Size = New System.Drawing.Size(1384, 40)
+        Me.Panel14.TabIndex = 2
+        '
+        'LbInfo
+        '
+        Me.LbInfo.AutoSize = True
+        Me.LbInfo.Location = New System.Drawing.Point(213, 16)
+        Me.LbInfo.Name = "LbInfo"
+        Me.LbInfo.Size = New System.Drawing.Size(235, 13)
+        Me.LbInfo.TabIndex = 1
+        Me.LbInfo.Text = "Doppel-Klick in der Liste öffnet die Detailansicht."
+        '
+        'LbJournalCount
+        '
+        Me.LbJournalCount.AutoSize = True
+        Me.LbJournalCount.Location = New System.Drawing.Point(3, 16)
+        Me.LbJournalCount.Name = "LbJournalCount"
+        Me.LbJournalCount.Size = New System.Drawing.Size(97, 13)
+        Me.LbJournalCount.TabIndex = 0
+        Me.LbJournalCount.Text = "Anzahl Dokumente"
         '
         'MenuStrip1
         '
@@ -2518,233 +2602,491 @@ Partial Class Start
         Me.TestFormToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
         Me.TestFormToolStripMenuItem.Text = "TestForm"
         '
-        'TabPage3
+        'ToolStrip1
         '
-        Me.TabPage3.Controls.Add(Me.TableLayoutPanel3)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(1451, 729)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Journal"
-        Me.TabPage3.UseVisualStyleBackColor = True
+        Me.ToolStrip1.AllowDrop = True
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(44, 44)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonExit, Me.ToolStripButton9, Me.ToolStripSeparator14, Me.ToolStripButtonScan, Me.ToolStripSeparator13, Me.ToolStripButton12, Me.ToolStripButtonScanInput, Me.ToolStripButton14, Me.ToolStripSeparator1, Me.ToolStripButtonMandanten, Me.ToolStripButtonAkten, Me.ToolStripButtonVorgaenge, Me.ToolStripButtonDokumente, Me.ToolStripLabel2, Me.ToolStripSeparator11, Me.ToolStripButtonWv, Me.ToolStripButtonNoteNeu, Me.ToolStripButton1, Me.ToolStripButtonVorlagen, Me.ToolStripSeparator15, Me.ToolStripButtonDatSuche, Me.ToolStripButtonSchnellSuche, Me.ToolStripSeparator8, Me.ToolStripButtonDelDoc})
+        Me.ToolStrip1.Location = New System.Drawing.Point(3, 24)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(839, 51)
+        Me.ToolStrip1.TabIndex = 8
         '
-        'ProviderBindingSource
+        'ToolStripButtonExit
         '
-        Me.ProviderBindingSource.DataMember = "Provider"
-        Me.ProviderBindingSource.DataSource = Me.ProviderDataBase
+        Me.ToolStripButtonExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonExit.Image = CType(resources.GetObject("ToolStripButtonExit.Image"), System.Drawing.Image)
+        Me.ToolStripButtonExit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonExit.Name = "ToolStripButtonExit"
+        Me.ToolStripButtonExit.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonExit.Text = "Programm beenden."
+        Me.ToolStripButtonExit.ToolTipText = "FreeDMS beenden"
         '
-        'ProviderDataBase
+        'ToolStripButton9
         '
-        Me.ProviderDataBase.DataSetName = "ProviderDataBase"
-        Me.ProviderDataBase.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.ToolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton9.Image = CType(resources.GetObject("ToolStripButton9.Image"), System.Drawing.Image)
+        Me.ToolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton9.Name = "ToolStripButton9"
+        Me.ToolStripButton9.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButton9.Text = "Refresh - Neu laden"
+        Me.ToolStripButton9.ToolTipText = "Refresh"
         '
-        'TableLayoutPanel3
+        'ToolStripSeparator14
         '
-        Me.TableLayoutPanel3.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.TableLayoutPanel3.ColumnCount = 2
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95.79946!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.200542!))
-        Me.TableLayoutPanel3.Controls.Add(Me.DokumenteSQLDataGridView, 0, 1)
-        Me.TableLayoutPanel3.Controls.Add(Me.Panel13, 0, 2)
-        Me.TableLayoutPanel3.Controls.Add(Me.Panel14, 0, 0)
-        Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel3.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
-        Me.TableLayoutPanel3.RowCount = 3
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.581699!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.4183!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 117.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1451, 729)
-        Me.TableLayoutPanel3.TabIndex = 1
+        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(6, 51)
         '
-        'DokumenteSQLDataGridView
+        'ToolStripButtonScan
         '
-        Me.DokumenteSQLDataGridView.AllowUserToAddRows = False
-        Me.DokumenteSQLDataGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle20.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.DokumenteSQLDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle20
-        Me.DokumenteSQLDataGridView.AutoGenerateColumns = False
-        Me.DokumenteSQLDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DokumenteSQLDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.MandantDataGridViewTextBoxColumn, Me.AkteDataGridViewTextBoxColumn, Me.VorgangDataGridViewTextBoxColumn, Me.DokumentDataGridViewTextBoxColumn, Me.KommentarDataGridViewTextBoxColumn, Me.BetreffDataGridViewTextBoxColumn, Me.DokDatumDataGridViewTextBoxColumn, Me.AufgenommenDataGridViewTextBoxColumn, Me.GeaendertDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.IstAnlageDataGridViewCheckBoxColumn, Me.AnlagenIDDataGridViewTextBoxColumn, Me.InhaltOCRDataGridViewTextBoxColumn, Me.EmpfängerDataGridViewTextBoxColumn, Me.AblageDataGridViewTextBoxColumn, Me.ArtDataGridViewTextBoxColumn, Me.StatusDataGridViewTextBoxColumn, Me.BearbVermerkDataGridViewTextBoxColumn, Me.DokNameDataGridViewTextBoxColumn})
-        Me.DokumenteSQLDataGridView.DataSource = Me.DokumenteSQLBindingSource
-        Me.DokumenteSQLDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DokumenteSQLDataGridView.Location = New System.Drawing.Point(3, 49)
-        Me.DokumenteSQLDataGridView.Name = "DokumenteSQLDataGridView"
-        Me.DokumenteSQLDataGridView.RowHeadersVisible = False
-        Me.DokumenteSQLDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DokumenteSQLDataGridView.Size = New System.Drawing.Size(1384, 559)
-        Me.DokumenteSQLDataGridView.TabIndex = 0
+        Me.ToolStripButtonScan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonScan.Image = CType(resources.GetObject("ToolStripButtonScan.Image"), System.Drawing.Image)
+        Me.ToolStripButtonScan.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonScan.Name = "ToolStripButtonScan"
+        Me.ToolStripButtonScan.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonScan.Text = "Dokument scannen"
         '
-        'Panel13
+        'ToolStripSeparator13
         '
-        Me.Panel13.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel13.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel13.Location = New System.Drawing.Point(3, 614)
-        Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(1384, 112)
-        Me.Panel13.TabIndex = 1
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(6, 51)
         '
-        'Panel14
+        'ToolStripButton12
         '
-        Me.Panel14.Controls.Add(Me.LbInfo)
-        Me.Panel14.Controls.Add(Me.LbJournalCount)
-        Me.Panel14.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel14.Location = New System.Drawing.Point(3, 3)
-        Me.Panel14.Name = "Panel14"
-        Me.Panel14.Size = New System.Drawing.Size(1384, 40)
-        Me.Panel14.TabIndex = 2
+        Me.ToolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton12.Enabled = False
+        Me.ToolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton12.Name = "ToolStripButton12"
+        Me.ToolStripButton12.Size = New System.Drawing.Size(23, 48)
+        Me.ToolStripButton12.Text = "ToolStripButton12"
         '
-        'LbInfo
+        'ToolStripButtonScanInput
         '
-        Me.LbInfo.AutoSize = True
-        Me.LbInfo.Location = New System.Drawing.Point(213, 16)
-        Me.LbInfo.Name = "LbInfo"
-        Me.LbInfo.Size = New System.Drawing.Size(235, 13)
-        Me.LbInfo.TabIndex = 1
-        Me.LbInfo.Text = "Doppel-Klick in der Liste öffnet die Detailansicht."
+        Me.ToolStripButtonScanInput.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonScanInput.Image = CType(resources.GetObject("ToolStripButtonScanInput.Image"), System.Drawing.Image)
+        Me.ToolStripButtonScanInput.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonScanInput.Name = "ToolStripButtonScanInput"
+        Me.ToolStripButtonScanInput.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonScanInput.Text = "Dokumente aus Input-Ordner einlesen"
+        Me.ToolStripButtonScanInput.ToolTipText = "Dokumente archivieren"
         '
-        'LbJournalCount
+        'ToolStripButton14
         '
-        Me.LbJournalCount.AutoSize = True
-        Me.LbJournalCount.Location = New System.Drawing.Point(3, 16)
-        Me.LbJournalCount.Name = "LbJournalCount"
-        Me.LbJournalCount.Size = New System.Drawing.Size(97, 13)
-        Me.LbJournalCount.TabIndex = 0
-        Me.LbJournalCount.Text = "Anzahl Dokumente"
+        Me.ToolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton14.Image = CType(resources.GetObject("ToolStripButton14.Image"), System.Drawing.Image)
+        Me.ToolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton14.Name = "ToolStripButton14"
+        Me.ToolStripButton14.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButton14.Text = "ToolStripButton14"
+        Me.ToolStripButton14.ToolTipText = "Neuer Datensatz ohne verknüpftes Dokument"
         '
-        '_FreeDMS_StartDBDataSet
+        'ToolStripSeparator1
         '
-        Me._FreeDMS_StartDBDataSet.DataSetName = "_FreeDMS_StartDBDataSet"
-        Me._FreeDMS_StartDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 51)
         '
-        'DokumenteSQLBindingSource
+        'ToolStripButtonMandanten
         '
-        Me.DokumenteSQLBindingSource.DataMember = "DokumenteSQL"
-        Me.DokumenteSQLBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        Me.ToolStripButtonMandanten.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonMandanten.Image = CType(resources.GetObject("ToolStripButtonMandanten.Image"), System.Drawing.Image)
+        Me.ToolStripButtonMandanten.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonMandanten.Name = "ToolStripButtonMandanten"
+        Me.ToolStripButtonMandanten.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonMandanten.Text = "ToolStripButton3"
+        Me.ToolStripButtonMandanten.ToolTipText = "Bereiche/Mandanten anzeigen"
+        '
+        'ToolStripButtonAkten
+        '
+        Me.ToolStripButtonAkten.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonAkten.Image = CType(resources.GetObject("ToolStripButtonAkten.Image"), System.Drawing.Image)
+        Me.ToolStripButtonAkten.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonAkten.Name = "ToolStripButtonAkten"
+        Me.ToolStripButtonAkten.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonAkten.Text = "ToolStripButton5"
+        Me.ToolStripButtonAkten.ToolTipText = "Aktenliste anzeigen"
+        '
+        'ToolStripButtonVorgaenge
+        '
+        Me.ToolStripButtonVorgaenge.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonVorgaenge.Image = CType(resources.GetObject("ToolStripButtonVorgaenge.Image"), System.Drawing.Image)
+        Me.ToolStripButtonVorgaenge.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonVorgaenge.Name = "ToolStripButtonVorgaenge"
+        Me.ToolStripButtonVorgaenge.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonVorgaenge.Text = "ToolStripButton6"
+        Me.ToolStripButtonVorgaenge.ToolTipText = "Ordnerliste anzeigen"
+        '
+        'ToolStripButtonDokumente
+        '
+        Me.ToolStripButtonDokumente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonDokumente.Image = CType(resources.GetObject("ToolStripButtonDokumente.Image"), System.Drawing.Image)
+        Me.ToolStripButtonDokumente.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonDokumente.Name = "ToolStripButtonDokumente"
+        Me.ToolStripButtonDokumente.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonDokumente.Text = "ToolStripButton7"
+        Me.ToolStripButtonDokumente.ToolTipText = "Dokumentenliste anzeigen"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(0, 48)
+        Me.ToolStripLabel2.Text = "Archiv"
+        Me.ToolStripLabel2.ToolTipText = "Archiv Vorgänge"
+        '
+        'ToolStripSeparator11
+        '
+        Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
+        Me.ToolStripSeparator11.Size = New System.Drawing.Size(6, 51)
+        '
+        'ToolStripButtonWv
+        '
+        Me.ToolStripButtonWv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonWv.Image = CType(resources.GetObject("ToolStripButtonWv.Image"), System.Drawing.Image)
+        Me.ToolStripButtonWv.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonWv.Name = "ToolStripButtonWv"
+        Me.ToolStripButtonWv.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonWv.Text = "ToolStripButton2"
+        Me.ToolStripButtonWv.ToolTipText = "Wiedervorlage"
+        '
+        'ToolStripButtonNoteNeu
+        '
+        Me.ToolStripButtonNoteNeu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonNoteNeu.Image = CType(resources.GetObject("ToolStripButtonNoteNeu.Image"), System.Drawing.Image)
+        Me.ToolStripButtonNoteNeu.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonNoteNeu.Name = "ToolStripButtonNoteNeu"
+        Me.ToolStripButtonNoteNeu.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonNoteNeu.Text = "Neue Notiz"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButton1.Text = "Name/Anschrift neu"
+        '
+        'ToolStripButtonVorlagen
+        '
+        Me.ToolStripButtonVorlagen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonVorlagen.Image = CType(resources.GetObject("ToolStripButtonVorlagen.Image"), System.Drawing.Image)
+        Me.ToolStripButtonVorlagen.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonVorlagen.Name = "ToolStripButtonVorlagen"
+        Me.ToolStripButtonVorlagen.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonVorlagen.Text = "ToolStripButton9"
+        Me.ToolStripButtonVorlagen.ToolTipText = "Vorlagen erstellen"
+        '
+        'ToolStripSeparator15
+        '
+        Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
+        Me.ToolStripSeparator15.Size = New System.Drawing.Size(6, 51)
+        '
+        'ToolStripButtonDatSuche
+        '
+        Me.ToolStripButtonDatSuche.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonDatSuche.Image = CType(resources.GetObject("ToolStripButtonDatSuche.Image"), System.Drawing.Image)
+        Me.ToolStripButtonDatSuche.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonDatSuche.Name = "ToolStripButtonDatSuche"
+        Me.ToolStripButtonDatSuche.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonDatSuche.Text = "Heute aufgenommen"
+        '
+        'ToolStripButtonSchnellSuche
+        '
+        Me.ToolStripButtonSchnellSuche.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonSchnellSuche.Image = CType(resources.GetObject("ToolStripButtonSchnellSuche.Image"), System.Drawing.Image)
+        Me.ToolStripButtonSchnellSuche.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonSchnellSuche.Name = "ToolStripButtonSchnellSuche"
+        Me.ToolStripButtonSchnellSuche.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonSchnellSuche.Text = "Schnellsuche"
+        Me.ToolStripButtonSchnellSuche.ToolTipText = "Schnellsuche"
+        '
+        'ToolStripSeparator8
+        '
+        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(6, 51)
+        '
+        'ToolStripButtonDelDoc
+        '
+        Me.ToolStripButtonDelDoc.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonDelDoc.Image = CType(resources.GetObject("ToolStripButtonDelDoc.Image"), System.Drawing.Image)
+        Me.ToolStripButtonDelDoc.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonDelDoc.Name = "ToolStripButtonDelDoc"
+        Me.ToolStripButtonDelDoc.Size = New System.Drawing.Size(48, 48)
+        Me.ToolStripButtonDelDoc.Tag = ""
+        Me.ToolStripButtonDelDoc.Text = "ToolStripButton14"
+        Me.ToolStripButtonDelDoc.ToolTipText = "Aktuellen Datensatz löschen"
         '
         'DokumenteSQLTableAdapter
         '
         Me.DokumenteSQLTableAdapter.ClearBeforeFill = True
         '
-        'IdDataGridViewTextBoxColumn
+        'NotizBindingSource
         '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "id"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.NotizBindingSource.DataMember = "notiz"
+        Me.NotizBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
-        'MandantDataGridViewTextBoxColumn
+        'NotizTableAdapter
         '
-        Me.MandantDataGridViewTextBoxColumn.DataPropertyName = "Mandant"
-        Me.MandantDataGridViewTextBoxColumn.HeaderText = "Mandant"
-        Me.MandantDataGridViewTextBoxColumn.Name = "MandantDataGridViewTextBoxColumn"
+        Me.NotizTableAdapter.ClearBeforeFill = True
         '
-        'AkteDataGridViewTextBoxColumn
+        'IdDataGridViewTextBoxColumn1
         '
-        Me.AkteDataGridViewTextBoxColumn.DataPropertyName = "Akte"
-        Me.AkteDataGridViewTextBoxColumn.HeaderText = "Akte"
-        Me.AkteDataGridViewTextBoxColumn.Name = "AkteDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn1.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn1.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn1.Name = "IdDataGridViewTextBoxColumn1"
         '
-        'VorgangDataGridViewTextBoxColumn
+        'AkteDataGridViewTextBoxColumn1
         '
-        Me.VorgangDataGridViewTextBoxColumn.DataPropertyName = "Vorgang"
-        Me.VorgangDataGridViewTextBoxColumn.HeaderText = "Vorgang"
-        Me.VorgangDataGridViewTextBoxColumn.Name = "VorgangDataGridViewTextBoxColumn"
+        Me.AkteDataGridViewTextBoxColumn1.DataPropertyName = "akte"
+        Me.AkteDataGridViewTextBoxColumn1.HeaderText = "akte"
+        Me.AkteDataGridViewTextBoxColumn1.Name = "AkteDataGridViewTextBoxColumn1"
         '
-        'DokumentDataGridViewTextBoxColumn
+        'VorgangDataGridViewTextBoxColumn1
         '
-        Me.DokumentDataGridViewTextBoxColumn.DataPropertyName = "Dokument"
-        Me.DokumentDataGridViewTextBoxColumn.HeaderText = "Dokument"
-        Me.DokumentDataGridViewTextBoxColumn.Name = "DokumentDataGridViewTextBoxColumn"
+        Me.VorgangDataGridViewTextBoxColumn1.DataPropertyName = "vorgang"
+        Me.VorgangDataGridViewTextBoxColumn1.HeaderText = "vorgang"
+        Me.VorgangDataGridViewTextBoxColumn1.Name = "VorgangDataGridViewTextBoxColumn1"
         '
-        'KommentarDataGridViewTextBoxColumn
+        'DokumentDataGridViewTextBoxColumn1
         '
-        Me.KommentarDataGridViewTextBoxColumn.DataPropertyName = "Kommentar"
-        Me.KommentarDataGridViewTextBoxColumn.HeaderText = "Kommentar"
-        Me.KommentarDataGridViewTextBoxColumn.Name = "KommentarDataGridViewTextBoxColumn"
+        Me.DokumentDataGridViewTextBoxColumn1.DataPropertyName = "dokument"
+        Me.DokumentDataGridViewTextBoxColumn1.HeaderText = "dokument"
+        Me.DokumentDataGridViewTextBoxColumn1.Name = "DokumentDataGridViewTextBoxColumn1"
         '
-        'BetreffDataGridViewTextBoxColumn
+        'ErstelltDataGridViewTextBoxColumn
         '
-        Me.BetreffDataGridViewTextBoxColumn.DataPropertyName = "Betreff"
-        Me.BetreffDataGridViewTextBoxColumn.HeaderText = "Betreff"
-        Me.BetreffDataGridViewTextBoxColumn.Name = "BetreffDataGridViewTextBoxColumn"
+        Me.ErstelltDataGridViewTextBoxColumn.DataPropertyName = "erstellt"
+        Me.ErstelltDataGridViewTextBoxColumn.HeaderText = "erstellt"
+        Me.ErstelltDataGridViewTextBoxColumn.Name = "ErstelltDataGridViewTextBoxColumn"
         '
-        'DokDatumDataGridViewTextBoxColumn
+        'TitelDataGridViewTextBoxColumn
         '
-        Me.DokDatumDataGridViewTextBoxColumn.DataPropertyName = "DokDatum"
-        Me.DokDatumDataGridViewTextBoxColumn.HeaderText = "DokDatum"
-        Me.DokDatumDataGridViewTextBoxColumn.Name = "DokDatumDataGridViewTextBoxColumn"
+        Me.TitelDataGridViewTextBoxColumn.DataPropertyName = "titel"
+        Me.TitelDataGridViewTextBoxColumn.HeaderText = "titel"
+        Me.TitelDataGridViewTextBoxColumn.Name = "TitelDataGridViewTextBoxColumn"
         '
-        'AufgenommenDataGridViewTextBoxColumn
+        'NotizDataGridViewTextBoxColumn
         '
-        Me.AufgenommenDataGridViewTextBoxColumn.DataPropertyName = "Aufgenommen"
-        Me.AufgenommenDataGridViewTextBoxColumn.HeaderText = "Aufgenommen"
-        Me.AufgenommenDataGridViewTextBoxColumn.Name = "AufgenommenDataGridViewTextBoxColumn"
+        Me.NotizDataGridViewTextBoxColumn.DataPropertyName = "notiz"
+        Me.NotizDataGridViewTextBoxColumn.HeaderText = "notiz"
+        Me.NotizDataGridViewTextBoxColumn.Name = "NotizDataGridViewTextBoxColumn"
         '
-        'GeaendertDataGridViewTextBoxColumn
+        'WvdatumDataGridViewTextBoxColumn
         '
-        Me.GeaendertDataGridViewTextBoxColumn.DataPropertyName = "Geaendert"
-        Me.GeaendertDataGridViewTextBoxColumn.HeaderText = "Geaendert"
-        Me.GeaendertDataGridViewTextBoxColumn.Name = "GeaendertDataGridViewTextBoxColumn"
+        Me.WvdatumDataGridViewTextBoxColumn.DataPropertyName = "wv_datum"
+        Me.WvdatumDataGridViewTextBoxColumn.HeaderText = "wv_datum"
+        Me.WvdatumDataGridViewTextBoxColumn.Name = "WvdatumDataGridViewTextBoxColumn"
         '
-        'NameDataGridViewTextBoxColumn
+        'NotizBindingSource1
         '
-        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "Name_"
-        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name_"
-        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        Me.NotizBindingSource1.DataMember = "notiz"
+        Me.NotizBindingSource1.DataSource = Me._FreeDMS_StartDBDataSet
         '
-        'IstAnlageDataGridViewCheckBoxColumn
+        'IdDataGridViewTextBoxColumn2
         '
-        Me.IstAnlageDataGridViewCheckBoxColumn.DataPropertyName = "istAnlage"
-        Me.IstAnlageDataGridViewCheckBoxColumn.HeaderText = "istAnlage"
-        Me.IstAnlageDataGridViewCheckBoxColumn.Name = "IstAnlageDataGridViewCheckBoxColumn"
+        Me.IdDataGridViewTextBoxColumn2.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn2.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn2.Name = "IdDataGridViewTextBoxColumn2"
         '
-        'AnlagenIDDataGridViewTextBoxColumn
+        'AkteDataGridViewTextBoxColumn2
         '
-        Me.AnlagenIDDataGridViewTextBoxColumn.DataPropertyName = "AnlagenID"
-        Me.AnlagenIDDataGridViewTextBoxColumn.HeaderText = "AnlagenID"
-        Me.AnlagenIDDataGridViewTextBoxColumn.Name = "AnlagenIDDataGridViewTextBoxColumn"
+        Me.AkteDataGridViewTextBoxColumn2.DataPropertyName = "akte"
+        Me.AkteDataGridViewTextBoxColumn2.HeaderText = "akte"
+        Me.AkteDataGridViewTextBoxColumn2.Name = "AkteDataGridViewTextBoxColumn2"
         '
-        'InhaltOCRDataGridViewTextBoxColumn
+        'VorgangDataGridViewTextBoxColumn2
         '
-        Me.InhaltOCRDataGridViewTextBoxColumn.DataPropertyName = "InhaltOCR"
-        Me.InhaltOCRDataGridViewTextBoxColumn.HeaderText = "InhaltOCR"
-        Me.InhaltOCRDataGridViewTextBoxColumn.Name = "InhaltOCRDataGridViewTextBoxColumn"
+        Me.VorgangDataGridViewTextBoxColumn2.DataPropertyName = "vorgang"
+        Me.VorgangDataGridViewTextBoxColumn2.HeaderText = "vorgang"
+        Me.VorgangDataGridViewTextBoxColumn2.Name = "VorgangDataGridViewTextBoxColumn2"
         '
-        'EmpfängerDataGridViewTextBoxColumn
+        'DokumentDataGridViewTextBoxColumn2
         '
-        Me.EmpfängerDataGridViewTextBoxColumn.DataPropertyName = "Empfänger"
-        Me.EmpfängerDataGridViewTextBoxColumn.HeaderText = "Empfänger"
-        Me.EmpfängerDataGridViewTextBoxColumn.Name = "EmpfängerDataGridViewTextBoxColumn"
+        Me.DokumentDataGridViewTextBoxColumn2.DataPropertyName = "dokument"
+        Me.DokumentDataGridViewTextBoxColumn2.HeaderText = "dokument"
+        Me.DokumentDataGridViewTextBoxColumn2.Name = "DokumentDataGridViewTextBoxColumn2"
         '
-        'AblageDataGridViewTextBoxColumn
+        'ErstelltDataGridViewTextBoxColumn1
         '
-        Me.AblageDataGridViewTextBoxColumn.DataPropertyName = "Ablage"
-        Me.AblageDataGridViewTextBoxColumn.HeaderText = "Ablage"
-        Me.AblageDataGridViewTextBoxColumn.Name = "AblageDataGridViewTextBoxColumn"
+        Me.ErstelltDataGridViewTextBoxColumn1.DataPropertyName = "erstellt"
+        Me.ErstelltDataGridViewTextBoxColumn1.HeaderText = "erstellt"
+        Me.ErstelltDataGridViewTextBoxColumn1.Name = "ErstelltDataGridViewTextBoxColumn1"
         '
-        'ArtDataGridViewTextBoxColumn
+        'TitelDataGridViewTextBoxColumn1
         '
-        Me.ArtDataGridViewTextBoxColumn.DataPropertyName = "Art"
-        Me.ArtDataGridViewTextBoxColumn.HeaderText = "Art"
-        Me.ArtDataGridViewTextBoxColumn.Name = "ArtDataGridViewTextBoxColumn"
+        Me.TitelDataGridViewTextBoxColumn1.DataPropertyName = "titel"
+        Me.TitelDataGridViewTextBoxColumn1.HeaderText = "titel"
+        Me.TitelDataGridViewTextBoxColumn1.Name = "TitelDataGridViewTextBoxColumn1"
         '
-        'StatusDataGridViewTextBoxColumn
+        'NotizDataGridViewTextBoxColumn1
         '
-        Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "Status"
-        Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
-        Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
+        Me.NotizDataGridViewTextBoxColumn1.DataPropertyName = "notiz"
+        Me.NotizDataGridViewTextBoxColumn1.HeaderText = "notiz"
+        Me.NotizDataGridViewTextBoxColumn1.Name = "NotizDataGridViewTextBoxColumn1"
         '
-        'BearbVermerkDataGridViewTextBoxColumn
+        'WvdatumDataGridViewTextBoxColumn1
         '
-        Me.BearbVermerkDataGridViewTextBoxColumn.DataPropertyName = "BearbVermerk"
-        Me.BearbVermerkDataGridViewTextBoxColumn.HeaderText = "BearbVermerk"
-        Me.BearbVermerkDataGridViewTextBoxColumn.Name = "BearbVermerkDataGridViewTextBoxColumn"
+        Me.WvdatumDataGridViewTextBoxColumn1.DataPropertyName = "wv_datum"
+        Me.WvdatumDataGridViewTextBoxColumn1.HeaderText = "wv_datum"
+        Me.WvdatumDataGridViewTextBoxColumn1.Name = "WvdatumDataGridViewTextBoxColumn1"
         '
-        'DokNameDataGridViewTextBoxColumn
+        'AblageBindingSource
         '
-        Me.DokNameDataGridViewTextBoxColumn.DataPropertyName = "DokName"
-        Me.DokNameDataGridViewTextBoxColumn.HeaderText = "DokName"
-        Me.DokNameDataGridViewTextBoxColumn.Name = "DokNameDataGridViewTextBoxColumn"
+        Me.AblageBindingSource.DataMember = "Ablage"
+        Me.AblageBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'AblageTableAdapter
+        '
+        Me.AblageTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.AblageTableAdapter = Me.AblageTableAdapter
+        Me.TableAdapterManager.AktenTableAdapter = Me.AktenTableAdapter
+        Me.TableAdapterManager.AnlagenTableAdapter = Me.AnlagenTableAdapter
+        Me.TableAdapterManager.AnschriftAltTableAdapter = Nothing
+        Me.TableAdapterManager.AnschriftenTableAdapter = Me.AnschriftenTableAdapter
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.DokArtTableAdapter = Nothing
+        Me.TableAdapterManager.DokumenteTableAdapter = Me.DokumenteTableAdapter
+        Me.TableAdapterManager.MandantTableAdapter = Me.MandantTableAdapter
+        Me.TableAdapterManager.notizTableAdapter = Me.NotizTableAdapter
+        Me.TableAdapterManager.StatusTableAdapter = Me.StatusTableAdapter
+        Me.TableAdapterManager.TypTableAdapter = Me.TypTableAdapter
+        Me.TableAdapterManager.UpdateOrder = FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.VorgaengeTableAdapter = Me.VorgaengeTableAdapter
+        Me.TableAdapterManager.VorlagenTableAdapter = Me.VorlagenTableAdapter
+        Me.TableAdapterManager.wiedervorlageTableAdapter = Me.WiedervorlageTableAdapter
+        '
+        'AktenBindingSource
+        '
+        Me.AktenBindingSource.DataMember = "Akten"
+        Me.AktenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'AktenTableAdapter
+        '
+        Me.AktenTableAdapter.ClearBeforeFill = True
+        '
+        'AnschriftenBindingSource
+        '
+        Me.AnschriftenBindingSource.DataMember = "Anschriften"
+        Me.AnschriftenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'AnschriftenTableAdapter
+        '
+        Me.AnschriftenTableAdapter.ClearBeforeFill = True
+        '
+        'DokumenteBindingSource
+        '
+        Me.DokumenteBindingSource.DataMember = "Dokumente"
+        Me.DokumenteBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'DokumenteTableAdapter
+        '
+        Me.DokumenteTableAdapter.ClearBeforeFill = True
+        '
+        'MandantBindingSource
+        '
+        Me.MandantBindingSource.DataMember = "Mandant"
+        Me.MandantBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'MandantTableAdapter
+        '
+        Me.MandantTableAdapter.ClearBeforeFill = True
+        '
+        'SqlVorgangAkteBindingSource
+        '
+        Me.SqlVorgangAkteBindingSource.DataMember = "sqlVorgangAkte"
+        Me.SqlVorgangAkteBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'SqlVorgangAkteTableAdapter
+        '
+        Me.SqlVorgangAkteTableAdapter.ClearBeforeFill = True
+        '
+        'StatusBindingSource
+        '
+        Me.StatusBindingSource.DataMember = "Status"
+        Me.StatusBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'StatusTableAdapter
+        '
+        Me.StatusTableAdapter.ClearBeforeFill = True
+        '
+        'TypBindingSource
+        '
+        Me.TypBindingSource.DataMember = "Typ"
+        Me.TypBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'TypTableAdapter
+        '
+        Me.TypTableAdapter.ClearBeforeFill = True
+        '
+        'VorgaengeBindingSource
+        '
+        Me.VorgaengeBindingSource.DataMember = "Vorgaenge"
+        Me.VorgaengeBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'VorgaengeTableAdapter
+        '
+        Me.VorgaengeTableAdapter.ClearBeforeFill = True
+        '
+        'VorlagenBindingSource
+        '
+        Me.VorlagenBindingSource.DataMember = "Vorlagen"
+        Me.VorlagenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'VorlagenTableAdapter
+        '
+        Me.VorlagenTableAdapter.ClearBeforeFill = True
+        '
+        'WiedervorlageBindingSource
+        '
+        Me.WiedervorlageBindingSource.DataMember = "wiedervorlage"
+        Me.WiedervorlageBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'WiedervorlageTableAdapter
+        '
+        Me.WiedervorlageTableAdapter.ClearBeforeFill = True
+        '
+        'AnlagenBindingSource
+        '
+        Me.AnlagenBindingSource.DataMember = "Anlagen"
+        Me.AnlagenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'AnlagenTableAdapter
+        '
+        Me.AnlagenTableAdapter.ClearBeforeFill = True
+        '
+        'AnlagenSQLBindingSource
+        '
+        Me.AnlagenSQLBindingSource.DataMember = "AnlagenSQL"
+        Me.AnlagenSQLBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'AnlagenSQLTableAdapter
+        '
+        Me.AnlagenSQLTableAdapter.ClearBeforeFill = True
+        '
+        'AnschriftenBindingSource1
+        '
+        Me.AnschriftenBindingSource1.DataMember = "Anschriften"
+        Me.AnschriftenBindingSource1.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        'ImageList3
+        '
+        Me.ImageList3.ImageStream = CType(resources.GetObject("ImageList3.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList3.Images.SetKeyName(0, "Ablage2.png")
+        Me.ImageList3.Images.SetKeyName(1, "Ablage.png")
+        Me.ImageList3.Images.SetKeyName(2, "001038.png")
+        Me.ImageList3.Images.SetKeyName(3, "Folder_16x.png")
+        Me.ImageList3.Images.SetKeyName(4, "FolderOpen_16x.png")
+        '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "document.png")
         '
         'Start
         '
@@ -2805,6 +3147,8 @@ Partial Class Start
         Me.Panel11.PerformLayout()
         Me.Panel12.ResumeLayout(False)
         Me.Panel12.PerformLayout()
+        CType(Me.ProviderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProviderDataBase, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GVEmails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelMailKopf.ResumeLayout(False)
         Me.PanelMail.ResumeLayout(False)
@@ -2815,19 +3159,33 @@ Partial Class Start
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelAtt.ResumeLayout(False)
         Me.PanelAtt.PerformLayout()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
-        CType(Me.ProviderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ProviderDataBase, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel3.ResumeLayout(False)
         CType(Me.DokumenteSQLDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DokumenteSQLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me._FreeDMS_StartDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel14.ResumeLayout(False)
         Me.Panel14.PerformLayout()
-        CType(Me._FreeDMS_StartDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DokumenteSQLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
+        CType(Me.NotizBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NotizBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AblageBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AktenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AnschriftenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DokumenteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MandantBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SqlVorgangAkteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.StatusBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TypBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VorgaengeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VorlagenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WiedervorlageBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AnlagenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AnlagenSQLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AnschriftenBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -3061,4 +3419,53 @@ Partial Class Start
     Friend WithEvents StatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents BearbVermerkDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DokNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NotizBindingSource As BindingSource
+    Friend WithEvents NotizTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.notizTableAdapter
+    Friend WithEvents IdDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents AkteDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents VorgangDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DokumentDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents ErstelltDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents TitelDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents NotizDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents WvdatumDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents NotizBindingSource1 As BindingSource
+    Friend WithEvents IdDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents AkteDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents VorgangDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DokumentDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ErstelltDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TitelDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NotizDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents WvdatumDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AblageBindingSource As BindingSource
+    Friend WithEvents AblageTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.AblageTableAdapter
+    Friend WithEvents TableAdapterManager As _FreeDMS_StartDBDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents AktenTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.AktenTableAdapter
+    Friend WithEvents AktenBindingSource As BindingSource
+    Friend WithEvents AnschriftenTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.AnschriftenTableAdapter
+    Friend WithEvents AnschriftenBindingSource As BindingSource
+    Friend WithEvents DokumenteTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.DokumenteTableAdapter
+    Friend WithEvents DokumenteBindingSource As BindingSource
+    Friend WithEvents MandantTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.MandantTableAdapter
+    Friend WithEvents MandantBindingSource As BindingSource
+    Friend WithEvents SqlVorgangAkteBindingSource As BindingSource
+    Friend WithEvents SqlVorgangAkteTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.sqlVorgangAkteTableAdapter
+    Friend WithEvents StatusTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.StatusTableAdapter
+    Friend WithEvents StatusBindingSource As BindingSource
+    Friend WithEvents TypTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.TypTableAdapter
+    Friend WithEvents TypBindingSource As BindingSource
+    Friend WithEvents VorgaengeTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.VorgaengeTableAdapter
+    Friend WithEvents VorgaengeBindingSource As BindingSource
+    Friend WithEvents VorlagenTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.VorlagenTableAdapter
+    Friend WithEvents VorlagenBindingSource As BindingSource
+    Friend WithEvents WiedervorlageTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.wiedervorlageTableAdapter
+    Friend WithEvents WiedervorlageBindingSource As BindingSource
+    Friend WithEvents AnlagenTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.AnlagenTableAdapter
+    Friend WithEvents AnlagenBindingSource As BindingSource
+    Friend WithEvents AnlagenSQLBindingSource As BindingSource
+    Friend WithEvents AnlagenSQLTableAdapter As _FreeDMS_StartDBDataSetTableAdapters.AnlagenSQLTableAdapter
+    Friend WithEvents AnschriftenBindingSource1 As BindingSource
+    Friend WithEvents ImageList3 As ImageList
+    Friend WithEvents ImageList1 As ImageList
 End Class

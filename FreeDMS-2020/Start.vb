@@ -16,6 +16,10 @@ Public Class Start
         Public DokName As String
     End Class
 
+    Dim todaySuche As Boolean = False
+    Dim offenSuche As Boolean = False
+    Dim FlagAkteArchiv As Boolean = False
+    Dim flagOrdnerArchiv As Boolean = False
     Public lblClose As Boolean = False
 
     Dim dbH As New dbHandling
@@ -60,6 +64,7 @@ Public Class Start
         Next
         'Settings prüfen und laden
         dbH.XMLReader()
+        dbH.ChekDB()
         dbH.ChkSettings()
         Me.Text = "FreeDMS - Aktuelle DB: " & dbH.CurrDB
         'Setting laden:
@@ -137,18 +142,376 @@ Public Class Start
         End If
 
 
-        'currDoc.Mandant = CInt(StartMandant)
-        'NotizBindingSource1.Filter = "id=0"
-        'LoadAll()
-        'LoadLvDok(LvScanInput)
-        'LoadLvDok(LVMailInput)
-        'FillTreeView()
+        currDoc.Mandant = CInt(dbH.StartMandant)
+        NotizBindingSource1.Filter = "id=0"
+        LoadAll()
+        LoadLvDok(LvScanInput)
+        LoadLvDok(LVMailInput)
+        FillTreeView()
         'FindTreeNode(StartMandant)
         ''Beim Start kein Dokument anzeigen
         'DokumenteBindingSource.Filter = "id=0"
         Me.WindowState = FormWindowState.Maximized
     End Sub
+    ''' <summary>
+    ''' Tabeladapter füllen
+    ''' Wiedervorlage prüfen
+    ''' </summary>
+    Private Sub LoadAll()
 
+        dbH.LoadDB(dbH.CurrDB)
+        MandantTableAdapter.Connection = dbH.con
+        DokumenteTableAdapter.Connection = dbH.con
+        DokumenteSQLTableAdapter.Connection = dbH.con
+        VorgaengeTableAdapter.Connection = dbH.con
+        AktenTableAdapter.Connection = dbH.con
+        AnschriftenTableAdapter.Connection = dbH.con
+        TypTableAdapter.Connection = dbH.con
+        StatusTableAdapter.Connection = dbH.con
+        AblageTableAdapter.Connection = dbH.con
+        NotizTableAdapter.Connection = dbH.con
+        SqlVorgangAkteTableAdapter.Connection = dbH.con
+        WiedervorlageTableAdapter.Connection = dbH.con
+        VorlagenTableAdapter.Connection = dbH.con
+        AnlagenSQLTableAdapter.Connection = dbH.con
+
+        MandantTableAdapter.Fill(_FreeDMS_StartDBDataSet.Mandant)
+        DokumenteTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Dokumente)
+        DokumenteSQLTableAdapter.Fill(_FreeDMS_StartDBDataSet.DokumenteSQL)
+        VorgaengeTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Vorgaenge)
+        AktenTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Akten)
+        AnschriftenTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Anschriften)
+        TypTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Typ)
+        StatusTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Status)
+        AblageTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Ablage)
+        NotizTableAdapter.Fill(_FreeDMS_StartDBDataSet.notiz)
+        SqlVorgangAkteTableAdapter.Fill(_FreeDMS_StartDBDataSet.sqlVorgangAkte)
+        WiedervorlageTableAdapter.Fill(_FreeDMS_StartDBDataSet.wiedervorlage)
+        VorlagenTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Vorlagen)
+        AnlagenSQLTableAdapter.Fill(_FreeDMS_StartDBDataSet.AnlagenSQL)
+        AnlagenSQLBindingSource.Filter = "id=0"
+
+        'WiedevorlageDG markieren
+        'Dim wv() As String '= Nothing
+        For i As Integer = 0 To DataGridView1.Rows.Count - 1
+            With DataGridView1
+                Dim wvDate As String = .Rows(i).Cells(1).Value.ToString
+                ' MsgBox(wvDate)
+                Dim wv() As String = Split(wvDate)
+                ' wv = String.Format("{0:M/dd/yyyy}", .Rows(i).Cells(1).Value.ToString)
+                'MsgBox(Now.ToShortDateString & "-" & wv(0))
+                If CDate(wv(0)) <= Now Then
+                    .Rows(i).DefaultCellStyle.BackColor = Color.Red
+                    .Rows(i).DefaultCellStyle.SelectionBackColor = Color.Red
+                Else
+                    .Rows(i).DefaultCellStyle.BackColor = Color.White
+                End If
+            End With
+        Next
+        SetCurrDoc()
+    End Sub
+    ''' <summary>
+    ''' Das mit lv festgelegte ListView füllen
+    ''' </summary>
+    ''' <param name="lv"></param>
+    Private Sub LoadLvDok(ByRef lv As ListView)
+        Dim locDirInfo As DirectoryInfo = Nothing
+        Dim locLtvItem As ListViewItem = Nothing
+        'Dim ltv As ListView
+        Dim okFile As String = ".DOC .MSG .PDF .JPG .JPEG .DOCX .TIF .GIF .TXT .XLS .XLSX .EML .PNG .DOT .PUB .BMP"
+        Dim AnzahlFiles As Integer = 0
+        'ltv = lvDoc
+        ' ltv = lv 'lvScaninput
+        With lv 'ltv
+            Try
+                .BeginUpdate()
+                Dim items As ListView.ListViewItemCollection = .Items
+
+                ' Spalten und Zeilen zurücksetzen
+                items.Clear()
+                .Columns.Clear()
+
+                .MultiSelect = False
+                .View = View.LargeIcon
+                ' ImageList zurücksetzen
+                ImageList1.Images.Clear()
+
+                ' ImageList zuweisen
+                .SmallImageList = ImageList1
+                .LargeImageList = ImageList1
+                ' Dateien ermitteln
+                Try
+                    locDirInfo = New DirectoryInfo(dbH.InputOrdner)
+                Catch ex As Exception
+                    MsgBox("Ordner nicht gefunden! Bitte die Settings überprüfen!")
+                    Exit Sub
+                End Try
+
+                If Not locDirInfo.Exists Then Throw New DirectoryNotFoundException
+
+                ' MsgBox(locDirInfo.GetFiles.Count.ToString)
+                For Each locFi As FileInfo In locDirInfo.GetFiles("*.*", SearchOption.TopDirectoryOnly)
+
+                    ' Icon zur ImageList hinzufügen - Key = Dateiendung
+                    If Not ImageList1.Images.ContainsKey(locFi.Extension) Then
+                        ImageList1.Images.Add(locFi.Extension, Icon.ExtractAssociatedIcon(locFi.FullName))
+                    End If
+                    If InStr(okFile, UCase(locFi.Extension)) <> 0 Then
+                        locLtvItem = New ListViewItem(New String() {locFi.Name,
+                                                                    locFi.Length.ToString(),
+                                                                    locFi.Extension,
+                                                                    locFi.LastAccessTime.ToString}) With {
+                            .Tag = locFi, ' Für spätere Verarbeitung der Datei merken
+                            .ImageKey = locFi.Extension   ' Icon zuweisen
+                            }
+
+                        items.Add(locLtvItem)
+                        AnzahlFiles = AnzahlFiles + 1
+                    End If
+                Next
+
+            Catch ex As Exception
+                ' Throw
+            Finally
+                .EndUpdate()
+                locDirInfo = Nothing
+                locLtvItem = Nothing
+            End Try
+        End With
+        If AnzahlFiles = 0 Then
+            LbEingangsKorb.Text = "Der Eingangskorb ist leer."
+        Else
+            LbEingangsKorb.Text = "Eingangskorb (" & dbH.InputOrdner & ") mit " & AnzahlFiles & " Eingängen"
+        End If
+    End Sub
+    ''' <summary>
+    ''' TreeView Mandant-Akte-Vorgang füllen
+    ''' </summary>
+    Private Sub FillTreeView()
+        TreeView1.Nodes.Clear()
+        Dim topNode As New TreeNode("Bereiche")
+        TreeView1.Nodes.Add(topNode)
+        topNode.Tag = "r;0"
+        ' TreeView1.Font = New Font("Arial", 10, FontStyle.Bold)
+        ' topNode.NodeFont = New Font(FontFamily.GenericSansSerif, FontStyle.Bold)
+        ' Add topNode to the TreeView.
+        ' TreeView1.Nodes.Add(topNode)
+        Dim NodeMandant As TreeNode
+        Dim NodeAkte As TreeNode
+        Dim NodeVorgang As TreeNode
+        NodeMandant = New TreeNode()
+        ' NodeMandant.Tag = "Alles"
+        NodeAkte = New TreeNode()
+        NodeVorgang = New TreeNode
+
+        Dim mandanten = From p In _FreeDMS_StartDBDataSet.Mandant
+        'NodeMandant.ImageIndex = 0
+        For Each myMandant In mandanten
+
+            NodeMandant = New TreeNode(myMandant.id & " " & myMandant.Mandant, 0, 1) With {
+                .Name = myMandant.id.ToString
+            }
+            topNode.NodeFont = New Font("Arial", 10, FontStyle.Bold)
+            topNode.Nodes.Add(NodeMandant) 'TreeView1.Nodes.Add(NodeMandant)
+            NodeMandant.Tag = "m;" & myMandant.id
+            NodeMandant.Collapse()
+            ''----für SubNode Akte
+
+            Dim akten = From p In _FreeDMS_StartDBDataSet.Akten Where p.Mandant = CDbl(myMandant.id) And p.Archiv = FlagAkteArchiv
+            For Each myAkte In akten
+                NodeAkte = New TreeNode(myAkte.id & " " & myAkte.Akte, 2, 2) With {
+                    .Name = myAkte.id.ToString
+                }
+                NodeMandant.Nodes.Add(NodeAkte)
+                NodeAkte.Tag = "a;" & myAkte.id
+                NodeAkte.Collapse()
+                '--- Subnote Vorgang
+                Dim vorgang = From p In _FreeDMS_StartDBDataSet.Vorgaenge Where p.Akte = CDbl(myAkte.id) And p.Archiv = flagOrdnerArchiv
+                'MsgBox("Vorgänge: " & vorgang.Count.ToString)
+                For Each myVorgang In vorgang
+                    NodeVorgang = New TreeNode(myVorgang.id & " " & myVorgang.Vorgang, 3, 4) With {
+                        .Name = myVorgang.id.ToString
+                    }
+                    NodeAkte.Nodes.Add(NodeVorgang)
+                    NodeVorgang.NodeFont = New Font("Arial", 10, FontStyle.Regular)
+                    NodeVorgang.Tag = "v;" & myVorgang.id
+                    NodeVorgang.Collapse()
+                Next
+                'Next
+            Next
+        Next
+        topNode.Expand()
+
+    End Sub
+    ''' <summary>
+    ''' Festlegen des Starpunktes für TreeView
+    ''' Ermitteln des aktuellen Knotens im TreeView
+    ''' </summary>
+    ''' <param name="az"></param>
+    Private Sub FindTreeNode(ByVal az As String)
+        Dim tn = TreeView1.Nodes.Find(az, True)
+
+        If Not tn.Count = 1 Then
+            Return
+        End If
+        TreeView1.SelectedNode = tn(0)
+        TreeView1.Select()
+    End Sub
+    ''' <summary>
+    ''' DataGridView Dokumente auf aktuelles Dok setzen
+    ''' </summary>
+    Private Sub SetCurrDoc()
+        FindTreeNode(currDoc.Vorgang.ToString)
+        Try
+            For i = 0 To DokumenteDataGridView.Rows.Count - 1
+                If CInt(DokumenteDataGridView.Rows(i).Cells(0).Value) = currDoc.Dokument Then
+
+                    DokumenteDataGridView.Rows(i).Selected = True
+                    DokumenteDataGridView.Refresh()
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+
+        DokShow()
+    End Sub
+    ''' <summary>
+    ''' Zentrales Anzeigemodul
+    ''' </summary>
+    Private Sub DokShow()
+        AblageTextBox.Text = Nothing
+        TypTextBox.Text = Nothing
+        StatusTextBox.Text = Nothing
+        AnlagenSQLDataGridView.Visible = False
+        LbAnlagen.Visible = True
+        Try
+            If DokumenteBindingSource.Current Is Nothing Then Exit Sub
+            Dim rwDokument = DirectCast(DirectCast(DokumenteBindingSource.Current, DataRowView).Row, _FreeDMS_StartDBDataSet.DokumenteRow)
+            GetMandantAkteVorgang()
+            'MsgBox(rwDokument.Typ & ", " & rwDokument.Status & ", " & rwDokument.Ablage)
+            With currDoc
+                .Mandant = rwDokument.Mandant
+                .Akte = rwDokument.Akte
+                .Vorgang = rwDokument.Vorgang
+                .Dokument = rwDokument.id
+                If (Not rwDokument.IsDokNameNull) OrElse (Not rwDokument.Anlagen = Nothing) Then
+                    .DokName = rwDokument.DokName
+                End If
+            End With
+            If rwDokument.Anlagen > 0 Then
+                ' MsgBox(rwDokument.Anlagen.ToString)
+                AnlagenSQLBindingSource.Filter = "Dokid=" & rwDokument.id
+                If AnlagenSQLBindingSource.Count > 0 Then
+                    AnlagenSQLDataGridView.Visible = True
+                    LbAnlagen.Text = "Anlage(n)"
+                Else
+                    AnlagenSQLDataGridView.Visible = False
+                    LbAnlagen.Text = "Anlage nicht zugeordnet (stammt aus früherer FreeDMS-Version)!"
+                End If
+            Else
+                AnlagenSQLDataGridView.Visible = False
+                LbAnlagen.Text = "keine Anlage(n)"
+            End If
+            If Not rwDokument.IsistAnlageNull Then
+                If rwDokument.istAnlage = True Then
+                    LbIstAnlage.Visible = True
+
+                Else
+                    LbIstAnlage.Visible = False
+                End If
+            End If
+            If Not rwDokument.IsAbsenderNull Then
+                AnschriftenBindingSource.Filter = "id=" & rwDokument.Absender
+            Else
+                AbsenderTextBox.Text = ""
+            End If
+            If Not rwDokument.IsEmpfaengerNull Then
+                AnschriftenBindingSource1.Filter = "id=" & rwDokument.Empfaenger
+            Else
+                EmpfaengerTextBox.Text = ""
+            End If
+            If Not rwDokument.IsBetragNull Then
+                BetragTextBox.Text = rwDokument.Betrag.ToString("C")
+            Else
+                BetragTextBox.Text = Nothing
+            End If
+            Dim status = From p In _FreeDMS_StartDBDataSet.Status Where p.id = CInt(rwDokument.Status) Select p
+            If status.Count > 0 Then
+                For Each eintrag In status
+                    StatusTextBox.Text = eintrag.Status
+                Next
+            Else
+                StatusTextBox.Text = "Nicht zugeordnet"
+            End If
+            Dim typ = From p In _FreeDMS_StartDBDataSet.Typ Where p.id = CInt(rwDokument.Typ) Select p
+            If typ.Count > 0 Then
+                For Each eintrag In typ
+                    TypTextBox.Text = eintrag.Typ
+                Next
+            Else
+                TypTextBox.Text = "Nicht zugeordnet"
+            End If
+            Dim ablage = From p In _FreeDMS_StartDBDataSet.Ablage Where p.Nummer = CInt(rwDokument.Ablage) Select p
+            If ablage.Count > 0 Then
+                For Each eintrag In ablage
+                    AblageTextBox.Text = eintrag.Ablage
+                Next
+            Else
+                AblageTextBox.Text = "Nicht zugeordnet"
+            End If
+
+
+            NotizBindingSource1.Filter = "dokument=" & currDoc.Dokument
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
+    ''' <summary>
+    ''' Syncronisation von Mandant-Akte-Vorgang
+    ''' </summary>
+    Private Sub GetMandantAkteVorgang()
+        Dim txtMandant As String = Nothing
+        Dim txtAkte As String = Nothing
+        Dim txtVorgang As String = Nothing
+        Dim az As String = Nothing
+
+        Try
+            Dim rwDokument = DirectCast(DirectCast(DokumenteBindingSource.Current, DataRowView).Row, _FreeDMS_StartDBDataSet.DokumenteRow)
+            lbAnzahl.Text = "Enthält " & DokumenteBindingSource.Count & " Dokumente"
+            If rwDokument.id > 0 Then
+                MandantBindingSource.Filter = "id=" & rwDokument.Mandant
+                AktenBindingSource.Filter = "id=" & rwDokument.Akte
+                VorgaengeBindingSource.Filter = "id=" & rwDokument.Vorgang
+                az = rwDokument.Mandant & "-" & rwDokument.Akte & "-" & rwDokument.Vorgang & "/" & rwDokument.id
+            End If
+            'Mandat auslesen
+            Dim rwMandant = DirectCast(DirectCast(MandantBindingSource.Current, DataRowView).Row, _FreeDMS_StartDBDataSet.MandantRow)
+            If Not rwMandant.IsMandantNull Then
+                txtMandant = rwMandant.Mandant
+            End If
+            'Akte auslesen
+            Dim rwAkten = DirectCast(DirectCast(AktenBindingSource.Current, DataRowView).Row, _FreeDMS_StartDBDataSet.AktenRow)
+            If Not rwAkten.IsAkteNull Then
+                txtAkte = rwAkten.Akte
+            End If
+            'Vorgang auslesen
+            Dim rwVorgang = DirectCast(DirectCast(VorgaengeBindingSource.Current, DataRowView).Row, _FreeDMS_StartDBDataSet.VorgaengeRow)
+            If Not rwVorgang.IsVorgangNull Then
+                txtVorgang = rwVorgang.Vorgang
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+        lbMandant.Text = txtMandant
+        lbAkte.Text = txtAkte
+        lbVorgang.Text = txtVorgang
+        lbAz.Text = "Aktenzeichen " & az
+    End Sub
 #End Region
 
 #Region "Mails"
