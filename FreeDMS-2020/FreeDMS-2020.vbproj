@@ -57,6 +57,9 @@
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="OpenPop, Version=2.0.6.1120, Culture=neutral, PublicKeyToken=6bdb97f144b7efc8, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenPop.NET.2.0.6.1120\lib\net40\OpenPop.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -92,6 +95,11 @@
     <Compile Include="MsgAccess.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ProviderDataBase.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProviderDataBase.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Start.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +121,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="_FreeDMS_StartDBDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_FreeDMS_StartDBDataSet.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +154,34 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="ProviderDataBase.xsc">
+      <DependentUpon>ProviderDataBase.xsd</DependentUpon>
+    </None>
+    <None Include="ProviderDataBase.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProviderDataBase.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProviderDataBase.xss">
+      <DependentUpon>ProviderDataBase.xsd</DependentUpon>
+    </None>
+    <None Include="_FreeDMS_StartDBDataSet.xsc">
+      <DependentUpon>_FreeDMS_StartDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_FreeDMS_StartDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_FreeDMS_StartDBDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_FreeDMS_StartDBDataSet.xss">
+      <DependentUpon>_FreeDMS_StartDBDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\freedms_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\freedms_logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Tesseract.3.3.0\build\Tesseract.targets" Condition="Exists('..\packages\Tesseract.3.3.0\build\Tesseract.targets')" />
