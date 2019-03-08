@@ -285,6 +285,32 @@ Public Class Start
         End If
     End Sub
     ''' <summary>
+    ''' Alle BindingSources beenden und Update der TableAdapter
+    ''' </summary>
+    Private Sub SaveAll()
+        Try
+            Validate()
+            MandantBindingSource.EndEdit()
+            DokumenteBindingSource.EndEdit()
+            VorgaengeBindingSource.EndEdit()
+            AktenBindingSource.EndEdit()
+            AnschriftenBindingSource.EndEdit()
+            AblageBindingSource.EndEdit()
+            TypBindingSource.EndEdit()
+            StatusBindingSource.EndEdit()
+            NotizBindingSource.EndEdit()
+            WiedervorlageBindingSource.EndEdit()
+            VorlagenBindingSource.EndEdit()
+            AnlagenSQLBindingSource.EndEdit()
+            TableAdapterManager.UpdateAll(Me._FreeDMS_StartDBDataSet)
+        Catch ex As Exception
+            MsgBox("Fehler beim Speichern! Bitte prüfen!")
+        End Try
+        'Aktuelle Settings zurückschreiben
+        My.Settings.LastDB = dbH.CurrDB
+        dbH.XMLWriter()
+    End Sub
+    ''' <summary>
     ''' TreeView Mandant-Akte-Vorgang füllen
     ''' </summary>
     Private Sub FillTreeView()
@@ -682,6 +708,21 @@ Public Class Start
             selAttachments = value
         End Set
     End Property
+
+
+#End Region
+#Region "Buttons"
+    ''' <summary>
+    ''' Programm beenden
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub ToolStripButtonExit_Click(sender As Object, e As EventArgs) Handles ToolStripButtonExit.Click, BeendenToolStripMenuItem.Click
+        lblClose = True
+        SaveAll()
+        Application.Exit()
+        ' Close()
+    End Sub
 
 #End Region
 End Class

@@ -47,17 +47,17 @@ Partial Class Start
         Dim ArchiviertLabel As System.Windows.Forms.Label
         Dim BeschreibungLabel As System.Windows.Forms.Label
         Dim AngelegtLabel As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Start))
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -65,6 +65,16 @@ Partial Class Start
         Me.Panel21 = New System.Windows.Forms.Panel()
         Me.DocNotizDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AkteDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VorgangDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokumentDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ErstelltDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TitelDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotizDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WvdatumDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotizBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me._FreeDMS_StartDBDataSet = New FreeDMS_2020._FreeDMS_StartDBDataSet()
         Me.lbNotizDok = New System.Windows.Forms.Label()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.PanelSuche = New System.Windows.Forms.Panel()
@@ -96,7 +106,9 @@ Partial Class Start
         Me.BetreffTextBox = New System.Windows.Forms.TextBox()
         Me.BetragTextBox = New System.Windows.Forms.TextBox()
         Me.AbsenderTextBox = New System.Windows.Forms.TextBox()
+        Me.AnschriftenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EmpfaengerTextBox = New System.Windows.Forms.TextBox()
+        Me.AnschriftenBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.KommentarTextBox = New System.Windows.Forms.TextBox()
         Me.AblageTextBox = New System.Windows.Forms.TextBox()
         Me.TypTextBox = New System.Windows.Forms.TextBox()
@@ -131,10 +143,20 @@ Partial Class Start
         Me.Label4 = New System.Windows.Forms.Label()
         Me.NotizDataGridView = New System.Windows.Forms.DataGridView()
         Me.erstellt = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AkteDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VorgangDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokumentDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ErstelltDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TitelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotizDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WvdatumDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotizBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PanelSuchBack = New System.Windows.Forms.Panel()
         Me.PanelSuchErgeb = New System.Windows.Forms.Panel()
         Me.lblSuchErgebnis = New System.Windows.Forms.Label()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
+        Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.GroupBoxAnzeige = New System.Windows.Forms.GroupBox()
         Me.RBOrdnerArchiv = New System.Windows.Forms.RadioButton()
@@ -209,7 +231,6 @@ Partial Class Start
         Me.BearbVermerkDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DokNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DokumenteSQLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me._FreeDMS_StartDBDataSet = New FreeDMS_2020._FreeDMS_StartDBDataSet()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.LbInfo = New System.Windows.Forms.Label()
@@ -287,54 +308,33 @@ Partial Class Start
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButtonDelDoc = New System.Windows.Forms.ToolStripButton()
         Me.DokumenteSQLTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.DokumenteSQLTableAdapter()
-        Me.NotizBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.NotizTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.notizTableAdapter()
-        Me.IdDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AkteDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VorgangDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DokumentDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ErstelltDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TitelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NotizDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WvdatumDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NotizBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.IdDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AkteDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VorgangDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DokumentDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ErstelltDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TitelDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NotizDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WvdatumDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AblageBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AblageTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AblageTableAdapter()
         Me.TableAdapterManager = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.TableAdapterManager()
-        Me.AktenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AktenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AktenTableAdapter()
-        Me.AnschriftenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AnlagenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnlagenTableAdapter()
         Me.AnschriftenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnschriftenTableAdapter()
-        Me.DokumenteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DokumenteTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.DokumenteTableAdapter()
-        Me.MandantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MandantTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.MandantTableAdapter()
+        Me.StatusTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.StatusTableAdapter()
+        Me.TypTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.TypTableAdapter()
+        Me.VorgaengeTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.VorgaengeTableAdapter()
+        Me.VorlagenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.VorlagenTableAdapter()
+        Me.WiedervorlageTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.wiedervorlageTableAdapter()
+        Me.AktenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DokumenteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MandantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SqlVorgangAkteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SqlVorgangAkteTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.sqlVorgangAkteTableAdapter()
         Me.StatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.StatusTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.StatusTableAdapter()
         Me.TypBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TypTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.TypTableAdapter()
         Me.VorgaengeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.VorgaengeTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.VorgaengeTableAdapter()
         Me.VorlagenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.VorlagenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.VorlagenTableAdapter()
         Me.WiedervorlageBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.WiedervorlageTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.wiedervorlageTableAdapter()
         Me.AnlagenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AnlagenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnlagenTableAdapter()
         Me.AnlagenSQLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AnlagenSQLTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnlagenSQLTableAdapter()
-        Me.AnschriftenBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         DokumentLabel = New System.Windows.Forms.Label()
         BetreffLabel = New System.Windows.Forms.Label()
@@ -368,6 +368,8 @@ Partial Class Start
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel21.SuspendLayout()
         CType(Me.DocNotizDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NotizBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me._FreeDMS_StartDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel10.SuspendLayout()
         Me.PanelSuche.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -376,12 +378,15 @@ Partial Class Start
         Me.Panel5.SuspendLayout()
         CType(Me.AnlagenSQLDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlDokButton.SuspendLayout()
+        CType(Me.AnschriftenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AnschriftenBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel19.SuspendLayout()
         CType(Me.NotizDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NotizBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelSuchBack.SuspendLayout()
         Me.PanelSuchErgeb.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -406,15 +411,11 @@ Partial Class Start
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.DokumenteSQLDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DokumenteSQLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me._FreeDMS_StartDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel14.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
-        CType(Me.NotizBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NotizBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AblageBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AktenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AnschriftenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DokumenteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MandantBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SqlVorgangAkteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -425,7 +426,6 @@ Partial Class Start
         CType(Me.WiedervorlageBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnlagenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnlagenSQLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AnschriftenBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DokumentLabel
@@ -763,8 +763,8 @@ Partial Class Start
         Me.DocNotizDataGridView.MultiSelect = False
         Me.DocNotizDataGridView.Name = "DocNotizDataGridView"
         Me.DocNotizDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DocNotizDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DocNotizDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DocNotizDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DocNotizDataGridView.Size = New System.Drawing.Size(444, 118)
         Me.DocNotizDataGridView.TabIndex = 1
@@ -773,13 +773,71 @@ Partial Class Start
         '
         Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "erstellt"
-        DataGridViewCellStyle13.Format = "d"
-        DataGridViewCellStyle13.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.Format = "d"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn1.HeaderText = "Vom"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ToolTipText = "Maus-Klick für Details"
         Me.DataGridViewTextBoxColumn1.Width = 53
+        '
+        'IdDataGridViewTextBoxColumn2
+        '
+        Me.IdDataGridViewTextBoxColumn2.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn2.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn2.Name = "IdDataGridViewTextBoxColumn2"
+        '
+        'AkteDataGridViewTextBoxColumn2
+        '
+        Me.AkteDataGridViewTextBoxColumn2.DataPropertyName = "akte"
+        Me.AkteDataGridViewTextBoxColumn2.HeaderText = "akte"
+        Me.AkteDataGridViewTextBoxColumn2.Name = "AkteDataGridViewTextBoxColumn2"
+        '
+        'VorgangDataGridViewTextBoxColumn2
+        '
+        Me.VorgangDataGridViewTextBoxColumn2.DataPropertyName = "vorgang"
+        Me.VorgangDataGridViewTextBoxColumn2.HeaderText = "vorgang"
+        Me.VorgangDataGridViewTextBoxColumn2.Name = "VorgangDataGridViewTextBoxColumn2"
+        '
+        'DokumentDataGridViewTextBoxColumn2
+        '
+        Me.DokumentDataGridViewTextBoxColumn2.DataPropertyName = "dokument"
+        Me.DokumentDataGridViewTextBoxColumn2.HeaderText = "dokument"
+        Me.DokumentDataGridViewTextBoxColumn2.Name = "DokumentDataGridViewTextBoxColumn2"
+        '
+        'ErstelltDataGridViewTextBoxColumn1
+        '
+        Me.ErstelltDataGridViewTextBoxColumn1.DataPropertyName = "erstellt"
+        Me.ErstelltDataGridViewTextBoxColumn1.HeaderText = "erstellt"
+        Me.ErstelltDataGridViewTextBoxColumn1.Name = "ErstelltDataGridViewTextBoxColumn1"
+        '
+        'TitelDataGridViewTextBoxColumn1
+        '
+        Me.TitelDataGridViewTextBoxColumn1.DataPropertyName = "titel"
+        Me.TitelDataGridViewTextBoxColumn1.HeaderText = "titel"
+        Me.TitelDataGridViewTextBoxColumn1.Name = "TitelDataGridViewTextBoxColumn1"
+        '
+        'NotizDataGridViewTextBoxColumn1
+        '
+        Me.NotizDataGridViewTextBoxColumn1.DataPropertyName = "notiz"
+        Me.NotizDataGridViewTextBoxColumn1.HeaderText = "notiz"
+        Me.NotizDataGridViewTextBoxColumn1.Name = "NotizDataGridViewTextBoxColumn1"
+        '
+        'WvdatumDataGridViewTextBoxColumn1
+        '
+        Me.WvdatumDataGridViewTextBoxColumn1.DataPropertyName = "wv_datum"
+        Me.WvdatumDataGridViewTextBoxColumn1.HeaderText = "wv_datum"
+        Me.WvdatumDataGridViewTextBoxColumn1.Name = "WvdatumDataGridViewTextBoxColumn1"
+        '
+        'NotizBindingSource1
+        '
+        Me.NotizBindingSource1.DataMember = "notiz"
+        Me.NotizBindingSource1.DataSource = Me._FreeDMS_StartDBDataSet
+        '
+        '_FreeDMS_StartDBDataSet
+        '
+        Me._FreeDMS_StartDBDataSet.DataSetName = "_FreeDMS_StartDBDataSet"
+        Me._FreeDMS_StartDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lbNotizDok
         '
@@ -948,8 +1006,8 @@ Partial Class Start
         '
         Me.DokumenteDataGridView.AllowUserToAddRows = False
         Me.DokumenteDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.DokumenteDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.DokumenteDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DokumenteDataGridView.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DokumenteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.TableLayoutPanel1.SetColumnSpan(Me.DokumenteDataGridView, 2)
@@ -958,8 +1016,8 @@ Partial Class Start
         Me.DokumenteDataGridView.MultiSelect = False
         Me.DokumenteDataGridView.Name = "DokumenteDataGridView"
         Me.DokumenteDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DokumenteDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DokumenteDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.TableLayoutPanel1.SetRowSpan(Me.DokumenteDataGridView, 3)
         Me.DokumenteDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DokumenteDataGridView.Size = New System.Drawing.Size(372, 369)
@@ -1135,6 +1193,11 @@ Partial Class Start
         Me.AbsenderTextBox.Size = New System.Drawing.Size(291, 20)
         Me.AbsenderTextBox.TabIndex = 17
         '
+        'AnschriftenBindingSource
+        '
+        Me.AnschriftenBindingSource.DataMember = "Anschriften"
+        Me.AnschriftenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
         'EmpfaengerTextBox
         '
         Me.EmpfaengerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnschriftenBindingSource1, "Name_", True))
@@ -1144,6 +1207,11 @@ Partial Class Start
         Me.EmpfaengerTextBox.ReadOnly = True
         Me.EmpfaengerTextBox.Size = New System.Drawing.Size(291, 20)
         Me.EmpfaengerTextBox.TabIndex = 19
+        '
+        'AnschriftenBindingSource1
+        '
+        Me.AnschriftenBindingSource1.DataMember = "Anschriften"
+        Me.AnschriftenBindingSource1.DataSource = Me._FreeDMS_StartDBDataSet
         '
         'KommentarTextBox
         '
@@ -1480,8 +1548,8 @@ Partial Class Start
         Me.NotizDataGridView.MultiSelect = False
         Me.NotizDataGridView.Name = "NotizDataGridView"
         Me.NotizDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NotizDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NotizDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.NotizDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.NotizDataGridView.Size = New System.Drawing.Size(372, 214)
         Me.NotizDataGridView.TabIndex = 26
@@ -1489,11 +1557,64 @@ Partial Class Start
         'erstellt
         '
         Me.erstellt.DataPropertyName = "erstellt"
-        DataGridViewCellStyle15.Format = "d"
-        DataGridViewCellStyle15.NullValue = Nothing
-        Me.erstellt.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle5.Format = "d"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.erstellt.DefaultCellStyle = DataGridViewCellStyle5
         Me.erstellt.HeaderText = "Vom"
         Me.erstellt.Name = "erstellt"
+        '
+        'IdDataGridViewTextBoxColumn1
+        '
+        Me.IdDataGridViewTextBoxColumn1.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn1.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn1.Name = "IdDataGridViewTextBoxColumn1"
+        '
+        'AkteDataGridViewTextBoxColumn1
+        '
+        Me.AkteDataGridViewTextBoxColumn1.DataPropertyName = "akte"
+        Me.AkteDataGridViewTextBoxColumn1.HeaderText = "akte"
+        Me.AkteDataGridViewTextBoxColumn1.Name = "AkteDataGridViewTextBoxColumn1"
+        '
+        'VorgangDataGridViewTextBoxColumn1
+        '
+        Me.VorgangDataGridViewTextBoxColumn1.DataPropertyName = "vorgang"
+        Me.VorgangDataGridViewTextBoxColumn1.HeaderText = "vorgang"
+        Me.VorgangDataGridViewTextBoxColumn1.Name = "VorgangDataGridViewTextBoxColumn1"
+        '
+        'DokumentDataGridViewTextBoxColumn1
+        '
+        Me.DokumentDataGridViewTextBoxColumn1.DataPropertyName = "dokument"
+        Me.DokumentDataGridViewTextBoxColumn1.HeaderText = "dokument"
+        Me.DokumentDataGridViewTextBoxColumn1.Name = "DokumentDataGridViewTextBoxColumn1"
+        '
+        'ErstelltDataGridViewTextBoxColumn
+        '
+        Me.ErstelltDataGridViewTextBoxColumn.DataPropertyName = "erstellt"
+        Me.ErstelltDataGridViewTextBoxColumn.HeaderText = "erstellt"
+        Me.ErstelltDataGridViewTextBoxColumn.Name = "ErstelltDataGridViewTextBoxColumn"
+        '
+        'TitelDataGridViewTextBoxColumn
+        '
+        Me.TitelDataGridViewTextBoxColumn.DataPropertyName = "titel"
+        Me.TitelDataGridViewTextBoxColumn.HeaderText = "titel"
+        Me.TitelDataGridViewTextBoxColumn.Name = "TitelDataGridViewTextBoxColumn"
+        '
+        'NotizDataGridViewTextBoxColumn
+        '
+        Me.NotizDataGridViewTextBoxColumn.DataPropertyName = "notiz"
+        Me.NotizDataGridViewTextBoxColumn.HeaderText = "notiz"
+        Me.NotizDataGridViewTextBoxColumn.Name = "NotizDataGridViewTextBoxColumn"
+        '
+        'WvdatumDataGridViewTextBoxColumn
+        '
+        Me.WvdatumDataGridViewTextBoxColumn.DataPropertyName = "wv_datum"
+        Me.WvdatumDataGridViewTextBoxColumn.HeaderText = "wv_datum"
+        Me.WvdatumDataGridViewTextBoxColumn.Name = "WvdatumDataGridViewTextBoxColumn"
+        '
+        'NotizBindingSource
+        '
+        Me.NotizBindingSource.DataMember = "notiz"
+        Me.NotizBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
         'PanelSuchBack
         '
@@ -1538,6 +1659,16 @@ Partial Class Start
         Me.TreeView1.ShowRootLines = False
         Me.TreeView1.Size = New System.Drawing.Size(344, 291)
         Me.TreeView1.TabIndex = 2
+        '
+        'ImageList3
+        '
+        Me.ImageList3.ImageStream = CType(resources.GetObject("ImageList3.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList3.Images.SetKeyName(0, "Ablage2.png")
+        Me.ImageList3.Images.SetKeyName(1, "Ablage.png")
+        Me.ImageList3.Images.SetKeyName(2, "001038.png")
+        Me.ImageList3.Images.SetKeyName(3, "Folder_16x.png")
+        Me.ImageList3.Images.SetKeyName(4, "FolderOpen_16x.png")
         '
         'Panel4
         '
@@ -1620,10 +1751,10 @@ Partial Class Start
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(244, 233)
         Me.DataGridView1.TabIndex = 1
@@ -1694,7 +1825,7 @@ Partial Class Start
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 504.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 505.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.Panel11, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Panel12, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.GVEmails, 0, 2)
@@ -1900,9 +2031,9 @@ Partial Class Start
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle18.Format = "g"
-        DataGridViewCellStyle18.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle8.Format = "g"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn5.HeaderText = "Vom"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.Width = 53
@@ -1910,8 +2041,8 @@ Partial Class Start
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridViewTextBoxColumn3.HeaderText = "Betreff"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         '
@@ -2106,8 +2237,8 @@ Partial Class Start
         '
         Me.DokumenteSQLDataGridView.AllowUserToAddRows = False
         Me.DokumenteSQLDataGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle20.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.DokumenteSQLDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.DokumenteSQLDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
         Me.DokumenteSQLDataGridView.AutoGenerateColumns = False
         Me.DokumenteSQLDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DokumenteSQLDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.MandantDataGridViewTextBoxColumn, Me.AkteDataGridViewTextBoxColumn, Me.VorgangDataGridViewTextBoxColumn, Me.DokumentDataGridViewTextBoxColumn, Me.KommentarDataGridViewTextBoxColumn, Me.BetreffDataGridViewTextBoxColumn, Me.DokDatumDataGridViewTextBoxColumn, Me.AufgenommenDataGridViewTextBoxColumn, Me.GeaendertDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.IstAnlageDataGridViewCheckBoxColumn, Me.AnlagenIDDataGridViewTextBoxColumn, Me.InhaltOCRDataGridViewTextBoxColumn, Me.EmpfängerDataGridViewTextBoxColumn, Me.AblageDataGridViewTextBoxColumn, Me.ArtDataGridViewTextBoxColumn, Me.StatusDataGridViewTextBoxColumn, Me.BearbVermerkDataGridViewTextBoxColumn, Me.DokNameDataGridViewTextBoxColumn})
@@ -2244,11 +2375,6 @@ Partial Class Start
         '
         Me.DokumenteSQLBindingSource.DataMember = "DokumenteSQL"
         Me.DokumenteSQLBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        '_FreeDMS_StartDBDataSet
-        '
-        Me._FreeDMS_StartDBDataSet.DataSetName = "_FreeDMS_StartDBDataSet"
-        Me._FreeDMS_StartDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Panel13
         '
@@ -2610,7 +2736,7 @@ Partial Class Start
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonExit, Me.ToolStripButton9, Me.ToolStripSeparator14, Me.ToolStripButtonScan, Me.ToolStripSeparator13, Me.ToolStripButton12, Me.ToolStripButtonScanInput, Me.ToolStripButton14, Me.ToolStripSeparator1, Me.ToolStripButtonMandanten, Me.ToolStripButtonAkten, Me.ToolStripButtonVorgaenge, Me.ToolStripButtonDokumente, Me.ToolStripLabel2, Me.ToolStripSeparator11, Me.ToolStripButtonWv, Me.ToolStripButtonNoteNeu, Me.ToolStripButton1, Me.ToolStripButtonVorlagen, Me.ToolStripSeparator15, Me.ToolStripButtonDatSuche, Me.ToolStripButtonSchnellSuche, Me.ToolStripSeparator8, Me.ToolStripButtonDelDoc})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(839, 51)
+        Me.ToolStrip1.Size = New System.Drawing.Size(870, 51)
         Me.ToolStrip1.TabIndex = 8
         '
         'ToolStripButtonExit
@@ -2821,115 +2947,9 @@ Partial Class Start
         '
         Me.DokumenteSQLTableAdapter.ClearBeforeFill = True
         '
-        'NotizBindingSource
-        '
-        Me.NotizBindingSource.DataMember = "notiz"
-        Me.NotizBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
         'NotizTableAdapter
         '
         Me.NotizTableAdapter.ClearBeforeFill = True
-        '
-        'IdDataGridViewTextBoxColumn1
-        '
-        Me.IdDataGridViewTextBoxColumn1.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn1.HeaderText = "id"
-        Me.IdDataGridViewTextBoxColumn1.Name = "IdDataGridViewTextBoxColumn1"
-        '
-        'AkteDataGridViewTextBoxColumn1
-        '
-        Me.AkteDataGridViewTextBoxColumn1.DataPropertyName = "akte"
-        Me.AkteDataGridViewTextBoxColumn1.HeaderText = "akte"
-        Me.AkteDataGridViewTextBoxColumn1.Name = "AkteDataGridViewTextBoxColumn1"
-        '
-        'VorgangDataGridViewTextBoxColumn1
-        '
-        Me.VorgangDataGridViewTextBoxColumn1.DataPropertyName = "vorgang"
-        Me.VorgangDataGridViewTextBoxColumn1.HeaderText = "vorgang"
-        Me.VorgangDataGridViewTextBoxColumn1.Name = "VorgangDataGridViewTextBoxColumn1"
-        '
-        'DokumentDataGridViewTextBoxColumn1
-        '
-        Me.DokumentDataGridViewTextBoxColumn1.DataPropertyName = "dokument"
-        Me.DokumentDataGridViewTextBoxColumn1.HeaderText = "dokument"
-        Me.DokumentDataGridViewTextBoxColumn1.Name = "DokumentDataGridViewTextBoxColumn1"
-        '
-        'ErstelltDataGridViewTextBoxColumn
-        '
-        Me.ErstelltDataGridViewTextBoxColumn.DataPropertyName = "erstellt"
-        Me.ErstelltDataGridViewTextBoxColumn.HeaderText = "erstellt"
-        Me.ErstelltDataGridViewTextBoxColumn.Name = "ErstelltDataGridViewTextBoxColumn"
-        '
-        'TitelDataGridViewTextBoxColumn
-        '
-        Me.TitelDataGridViewTextBoxColumn.DataPropertyName = "titel"
-        Me.TitelDataGridViewTextBoxColumn.HeaderText = "titel"
-        Me.TitelDataGridViewTextBoxColumn.Name = "TitelDataGridViewTextBoxColumn"
-        '
-        'NotizDataGridViewTextBoxColumn
-        '
-        Me.NotizDataGridViewTextBoxColumn.DataPropertyName = "notiz"
-        Me.NotizDataGridViewTextBoxColumn.HeaderText = "notiz"
-        Me.NotizDataGridViewTextBoxColumn.Name = "NotizDataGridViewTextBoxColumn"
-        '
-        'WvdatumDataGridViewTextBoxColumn
-        '
-        Me.WvdatumDataGridViewTextBoxColumn.DataPropertyName = "wv_datum"
-        Me.WvdatumDataGridViewTextBoxColumn.HeaderText = "wv_datum"
-        Me.WvdatumDataGridViewTextBoxColumn.Name = "WvdatumDataGridViewTextBoxColumn"
-        '
-        'NotizBindingSource1
-        '
-        Me.NotizBindingSource1.DataMember = "notiz"
-        Me.NotizBindingSource1.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'IdDataGridViewTextBoxColumn2
-        '
-        Me.IdDataGridViewTextBoxColumn2.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn2.HeaderText = "id"
-        Me.IdDataGridViewTextBoxColumn2.Name = "IdDataGridViewTextBoxColumn2"
-        '
-        'AkteDataGridViewTextBoxColumn2
-        '
-        Me.AkteDataGridViewTextBoxColumn2.DataPropertyName = "akte"
-        Me.AkteDataGridViewTextBoxColumn2.HeaderText = "akte"
-        Me.AkteDataGridViewTextBoxColumn2.Name = "AkteDataGridViewTextBoxColumn2"
-        '
-        'VorgangDataGridViewTextBoxColumn2
-        '
-        Me.VorgangDataGridViewTextBoxColumn2.DataPropertyName = "vorgang"
-        Me.VorgangDataGridViewTextBoxColumn2.HeaderText = "vorgang"
-        Me.VorgangDataGridViewTextBoxColumn2.Name = "VorgangDataGridViewTextBoxColumn2"
-        '
-        'DokumentDataGridViewTextBoxColumn2
-        '
-        Me.DokumentDataGridViewTextBoxColumn2.DataPropertyName = "dokument"
-        Me.DokumentDataGridViewTextBoxColumn2.HeaderText = "dokument"
-        Me.DokumentDataGridViewTextBoxColumn2.Name = "DokumentDataGridViewTextBoxColumn2"
-        '
-        'ErstelltDataGridViewTextBoxColumn1
-        '
-        Me.ErstelltDataGridViewTextBoxColumn1.DataPropertyName = "erstellt"
-        Me.ErstelltDataGridViewTextBoxColumn1.HeaderText = "erstellt"
-        Me.ErstelltDataGridViewTextBoxColumn1.Name = "ErstelltDataGridViewTextBoxColumn1"
-        '
-        'TitelDataGridViewTextBoxColumn1
-        '
-        Me.TitelDataGridViewTextBoxColumn1.DataPropertyName = "titel"
-        Me.TitelDataGridViewTextBoxColumn1.HeaderText = "titel"
-        Me.TitelDataGridViewTextBoxColumn1.Name = "TitelDataGridViewTextBoxColumn1"
-        '
-        'NotizDataGridViewTextBoxColumn1
-        '
-        Me.NotizDataGridViewTextBoxColumn1.DataPropertyName = "notiz"
-        Me.NotizDataGridViewTextBoxColumn1.HeaderText = "notiz"
-        Me.NotizDataGridViewTextBoxColumn1.Name = "NotizDataGridViewTextBoxColumn1"
-        '
-        'WvdatumDataGridViewTextBoxColumn1
-        '
-        Me.WvdatumDataGridViewTextBoxColumn1.DataPropertyName = "wv_datum"
-        Me.WvdatumDataGridViewTextBoxColumn1.HeaderText = "wv_datum"
-        Me.WvdatumDataGridViewTextBoxColumn1.Name = "WvdatumDataGridViewTextBoxColumn1"
         '
         'AblageBindingSource
         '
@@ -2959,41 +2979,60 @@ Partial Class Start
         Me.TableAdapterManager.VorlagenTableAdapter = Me.VorlagenTableAdapter
         Me.TableAdapterManager.wiedervorlageTableAdapter = Me.WiedervorlageTableAdapter
         '
-        'AktenBindingSource
-        '
-        Me.AktenBindingSource.DataMember = "Akten"
-        Me.AktenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
         'AktenTableAdapter
         '
         Me.AktenTableAdapter.ClearBeforeFill = True
         '
-        'AnschriftenBindingSource
+        'AnlagenTableAdapter
         '
-        Me.AnschriftenBindingSource.DataMember = "Anschriften"
-        Me.AnschriftenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        Me.AnlagenTableAdapter.ClearBeforeFill = True
         '
         'AnschriftenTableAdapter
         '
         Me.AnschriftenTableAdapter.ClearBeforeFill = True
+        '
+        'DokumenteTableAdapter
+        '
+        Me.DokumenteTableAdapter.ClearBeforeFill = True
+        '
+        'MandantTableAdapter
+        '
+        Me.MandantTableAdapter.ClearBeforeFill = True
+        '
+        'StatusTableAdapter
+        '
+        Me.StatusTableAdapter.ClearBeforeFill = True
+        '
+        'TypTableAdapter
+        '
+        Me.TypTableAdapter.ClearBeforeFill = True
+        '
+        'VorgaengeTableAdapter
+        '
+        Me.VorgaengeTableAdapter.ClearBeforeFill = True
+        '
+        'VorlagenTableAdapter
+        '
+        Me.VorlagenTableAdapter.ClearBeforeFill = True
+        '
+        'WiedervorlageTableAdapter
+        '
+        Me.WiedervorlageTableAdapter.ClearBeforeFill = True
+        '
+        'AktenBindingSource
+        '
+        Me.AktenBindingSource.DataMember = "Akten"
+        Me.AktenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
         'DokumenteBindingSource
         '
         Me.DokumenteBindingSource.DataMember = "Dokumente"
         Me.DokumenteBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
-        'DokumenteTableAdapter
-        '
-        Me.DokumenteTableAdapter.ClearBeforeFill = True
-        '
         'MandantBindingSource
         '
         Me.MandantBindingSource.DataMember = "Mandant"
         Me.MandantBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'MandantTableAdapter
-        '
-        Me.MandantTableAdapter.ClearBeforeFill = True
         '
         'SqlVorgangAkteBindingSource
         '
@@ -3009,54 +3048,30 @@ Partial Class Start
         Me.StatusBindingSource.DataMember = "Status"
         Me.StatusBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
-        'StatusTableAdapter
-        '
-        Me.StatusTableAdapter.ClearBeforeFill = True
-        '
         'TypBindingSource
         '
         Me.TypBindingSource.DataMember = "Typ"
         Me.TypBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'TypTableAdapter
-        '
-        Me.TypTableAdapter.ClearBeforeFill = True
         '
         'VorgaengeBindingSource
         '
         Me.VorgaengeBindingSource.DataMember = "Vorgaenge"
         Me.VorgaengeBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
-        'VorgaengeTableAdapter
-        '
-        Me.VorgaengeTableAdapter.ClearBeforeFill = True
-        '
         'VorlagenBindingSource
         '
         Me.VorlagenBindingSource.DataMember = "Vorlagen"
         Me.VorlagenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'VorlagenTableAdapter
-        '
-        Me.VorlagenTableAdapter.ClearBeforeFill = True
         '
         'WiedervorlageBindingSource
         '
         Me.WiedervorlageBindingSource.DataMember = "wiedervorlage"
         Me.WiedervorlageBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
-        'WiedervorlageTableAdapter
-        '
-        Me.WiedervorlageTableAdapter.ClearBeforeFill = True
-        '
         'AnlagenBindingSource
         '
         Me.AnlagenBindingSource.DataMember = "Anlagen"
         Me.AnlagenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'AnlagenTableAdapter
-        '
-        Me.AnlagenTableAdapter.ClearBeforeFill = True
         '
         'AnlagenSQLBindingSource
         '
@@ -3066,21 +3081,6 @@ Partial Class Start
         'AnlagenSQLTableAdapter
         '
         Me.AnlagenSQLTableAdapter.ClearBeforeFill = True
-        '
-        'AnschriftenBindingSource1
-        '
-        Me.AnschriftenBindingSource1.DataMember = "Anschriften"
-        Me.AnschriftenBindingSource1.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'ImageList3
-        '
-        Me.ImageList3.ImageStream = CType(resources.GetObject("ImageList3.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList3.Images.SetKeyName(0, "Ablage2.png")
-        Me.ImageList3.Images.SetKeyName(1, "Ablage.png")
-        Me.ImageList3.Images.SetKeyName(2, "001038.png")
-        Me.ImageList3.Images.SetKeyName(3, "Folder_16x.png")
-        Me.ImageList3.Images.SetKeyName(4, "FolderOpen_16x.png")
         '
         'ImageList1
         '
@@ -3107,6 +3107,8 @@ Partial Class Start
         Me.Panel21.ResumeLayout(False)
         Me.Panel21.PerformLayout()
         CType(Me.DocNotizDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NotizBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me._FreeDMS_StartDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel10.ResumeLayout(False)
         Me.Panel10.PerformLayout()
         Me.PanelSuche.ResumeLayout(False)
@@ -3119,6 +3121,8 @@ Partial Class Start
         Me.Panel5.PerformLayout()
         CType(Me.AnlagenSQLDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PnlDokButton.ResumeLayout(False)
+        CType(Me.AnschriftenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AnschriftenBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -3130,6 +3134,7 @@ Partial Class Start
         Me.Panel19.ResumeLayout(False)
         Me.Panel19.PerformLayout()
         CType(Me.NotizDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NotizBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelSuchBack.ResumeLayout(False)
         Me.PanelSuchErgeb.ResumeLayout(False)
         Me.PanelSuchErgeb.PerformLayout()
@@ -3163,18 +3168,14 @@ Partial Class Start
         Me.TableLayoutPanel3.ResumeLayout(False)
         CType(Me.DokumenteSQLDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DokumenteSQLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me._FreeDMS_StartDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel14.ResumeLayout(False)
         Me.Panel14.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.NotizBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NotizBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AblageBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AktenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AnschriftenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DokumenteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MandantBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SqlVorgangAkteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3185,7 +3186,6 @@ Partial Class Start
         CType(Me.WiedervorlageBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnlagenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnlagenSQLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AnschriftenBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
