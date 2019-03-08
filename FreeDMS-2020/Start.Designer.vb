@@ -336,6 +336,7 @@ Partial Class Start
         Me.AnlagenSQLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AnlagenSQLTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnlagenSQLTableAdapter()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.IdDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         DokumentLabel = New System.Windows.Forms.Label()
         BetreffLabel = New System.Windows.Forms.Label()
         BetragLabel = New System.Windows.Forms.Label()
@@ -1008,9 +1009,12 @@ Partial Class Start
         Me.DokumenteDataGridView.AllowUserToDeleteRows = False
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
         Me.DokumenteDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.DokumenteDataGridView.AutoGenerateColumns = False
         Me.DokumenteDataGridView.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DokumenteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DokumenteDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn3})
         Me.TableLayoutPanel1.SetColumnSpan(Me.DokumenteDataGridView, 2)
+        Me.DokumenteDataGridView.DataSource = Me.DokumenteBindingSource
         Me.DokumenteDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DokumenteDataGridView.Location = New System.Drawing.Point(353, 78)
         Me.DokumenteDataGridView.MultiSelect = False
@@ -2736,7 +2740,7 @@ Partial Class Start
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonExit, Me.ToolStripButton9, Me.ToolStripSeparator14, Me.ToolStripButtonScan, Me.ToolStripSeparator13, Me.ToolStripButton12, Me.ToolStripButtonScanInput, Me.ToolStripButton14, Me.ToolStripSeparator1, Me.ToolStripButtonMandanten, Me.ToolStripButtonAkten, Me.ToolStripButtonVorgaenge, Me.ToolStripButtonDokumente, Me.ToolStripLabel2, Me.ToolStripSeparator11, Me.ToolStripButtonWv, Me.ToolStripButtonNoteNeu, Me.ToolStripButton1, Me.ToolStripButtonVorlagen, Me.ToolStripSeparator15, Me.ToolStripButtonDatSuche, Me.ToolStripButtonSchnellSuche, Me.ToolStripSeparator8, Me.ToolStripButtonDelDoc})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(870, 51)
+        Me.ToolStrip1.Size = New System.Drawing.Size(839, 51)
         Me.ToolStrip1.TabIndex = 8
         '
         'ToolStripButtonExit
@@ -3087,6 +3091,12 @@ Partial Class Start
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "document.png")
+        '
+        'IdDataGridViewTextBoxColumn3
+        '
+        Me.IdDataGridViewTextBoxColumn3.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn3.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn3.Name = "IdDataGridViewTextBoxColumn3"
         '
         'Start
         '
@@ -3468,4 +3478,5 @@ Partial Class Start
     Friend WithEvents AnschriftenBindingSource1 As BindingSource
     Friend WithEvents ImageList3 As ImageList
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents IdDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
 End Class

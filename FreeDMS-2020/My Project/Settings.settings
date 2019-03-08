@@ -13,5 +13,8 @@
     <Setting Name="LastDB" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Einstellung" Type="System.String" Scope="User">
+      <Value Profile="(Default)">keine</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -43,8 +43,11 @@ Public Class Start
     ''' <param name="e"></param>
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'Vorbereitung
+
+
         Cursor.Current = Cursors.WaitCursor
+        dbH.CurrDB = My.Settings.LastDB
+        MsgBox(dbH.CurrDB)
         'testen ob Access installiert ist 
         If Not dbH.CheckForSoftwareInstallation("access") = True Then
             Me.TopMost = True
@@ -307,7 +310,7 @@ Public Class Start
             MsgBox("Fehler beim Speichern! Bitte prüfen!")
         End Try
         'Aktuelle Settings zurückschreiben
-        My.Settings.LastDB = dbH.CurrDB
+
         dbH.XMLWriter()
     End Sub
     ''' <summary>
@@ -720,6 +723,7 @@ Public Class Start
     Private Sub ToolStripButtonExit_Click(sender As Object, e As EventArgs) Handles ToolStripButtonExit.Click, BeendenToolStripMenuItem.Click
         lblClose = True
         SaveAll()
+        My.Settings.LastDB = dbH.CurrDB
         Application.Exit()
         ' Close()
     End Sub

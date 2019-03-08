@@ -75,7 +75,7 @@ Public Class dbHandling : Inherits Form
             If String.IsNullOrEmpty(.FileName) Then Exit Sub
             CurrDB = .FileName
             dbName = Path.GetFileName(.FileName)
-            My.Settings.LastDB = CurrDB
+
         End With
         XMLWriter()
     End Sub
@@ -116,6 +116,7 @@ Public Class dbHandling : Inherits Form
         ' Auswahl einer Kodierungsart für die Zeichenablage 
         Dim enc As New System.Text.UTF8Encoding
         Dim myDB As String = Path.GetFileNameWithoutExtension(CurrDB)
+        '  MsgBox("XMLWriter CurrDB: " & CurrDB)
         If String.IsNullOrEmpty(myDB) Then
             myDB = "Nothing"
             CurrDB = "Nothing"
@@ -165,9 +166,11 @@ Public Class dbHandling : Inherits Form
     ''' </summary>
     Public Sub XMLReader()
         Dim myPath As String = System.AppDomain.CurrentDomain.BaseDirectory 'Path.GetDirectoryName(CurrDB) & "\" 'CurrDB ist Pfad einschließlich '\Daten\
+        If String.IsNullOrEmpty(CurrDB) Then MyFileDialog("Bitte DB auswählen")
         Dim MyDB As String = Path.GetFileNameWithoutExtension(CurrDB)
+
         If String.IsNullOrEmpty(MyDB) Then
-            MyDB = Path.GetFileNameWithoutExtension(My.Settings.LastDB)
+            MyDB = Path.GetFileNameWithoutExtension(CurrDB)
         End If
         'MsgBox(MyDB & vbCrLf & CurrDB & vbCrLf & Path.GetDirectoryName(CurrDB))
         'prüfen, ob im Ordner der Aktuellen DB (CurrDB) die xml-Datei vohanden ist, wenn nicht prüfen ob sie im Anwendungs-Verzeichnis ist. Sonst neu erstellen
