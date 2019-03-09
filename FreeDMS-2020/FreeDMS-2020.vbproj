@@ -88,7 +88,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dbHandling.vb" />
+    <Compile Include="dbHandling.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MsgAccess.Designer.vb">
       <DependentUpon>MsgAccess.vb</DependentUpon>
     </Compile>
@@ -99,6 +101,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProviderDataBase.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.Designer.vb">
+      <DependentUpon>Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Start.vb">
       <SubType>Form</SubType>
@@ -131,6 +139,9 @@
   <ItemGroup>
     <EmbeddedResource Include="MsgAccess.resx">
       <DependentUpon>MsgAccess.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.vb</DependentUpon>

@@ -76,6 +76,18 @@ Namespace My
                 Me("LastDB") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("keine")>  _
+        Public Property Einstellung() As String
+            Get
+                Return CType(Me("Einstellung"),String)
+            End Get
+            Set
+                Me("Einstellung") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

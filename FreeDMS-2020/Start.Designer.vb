@@ -92,6 +92,11 @@ Partial Class Start
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.DokumenteDataGridView = New System.Windows.Forms.DataGridView()
+        Me.IdDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Dokument = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Betreff = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokDatum = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DokumenteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.AnlagenSQLDataGridView = New System.Windows.Forms.DataGridView()
         Me.LbIstAnlage = New System.Windows.Forms.Label()
@@ -117,6 +122,7 @@ Partial Class Start
         Me.BearbVermerkTextBox = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.BeendetTextBox = New System.Windows.Forms.TextBox()
+        Me.VorgaengeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BegonnenTextBox = New System.Windows.Forms.TextBox()
         Me.BeschreibungTextBox1 = New System.Windows.Forms.TextBox()
         Me.IdTextBox1 = New System.Windows.Forms.TextBox()
@@ -125,8 +131,10 @@ Partial Class Start
         Me.HinweiseTextBox = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ArchiviertTextBox = New System.Windows.Forms.TextBox()
+        Me.AktenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AngelegtTextBox = New System.Windows.Forms.TextBox()
         Me.MandantTextBox1 = New System.Windows.Forms.TextBox()
+        Me.MandantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BeschreibungTextBox = New System.Windows.Forms.TextBox()
         Me.IdTextBox = New System.Windows.Forms.TextBox()
         Me.ArchivCheckBox = New System.Windows.Forms.CheckBox()
@@ -257,7 +265,6 @@ Partial Class Start
         Me.ExtrasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnpassenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OptionenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnschriftenAusDokÜbernehmenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageNachPDFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ArchivierteVorgängeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -322,20 +329,17 @@ Partial Class Start
         Me.VorgaengeTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.VorgaengeTableAdapter()
         Me.VorlagenTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.VorlagenTableAdapter()
         Me.WiedervorlageTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.wiedervorlageTableAdapter()
-        Me.AktenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DokumenteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MandantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SqlVorgangAkteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SqlVorgangAkteTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.sqlVorgangAkteTableAdapter()
         Me.StatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TypBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.VorgaengeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VorlagenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.WiedervorlageBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AnlagenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AnlagenSQLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AnlagenSQLTableAdapter = New FreeDMS_2020._FreeDMS_StartDBDataSetTableAdapters.AnlagenSQLTableAdapter()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.BGWRefresh = New System.ComponentModel.BackgroundWorker()
         DokumentLabel = New System.Windows.Forms.Label()
         BetreffLabel = New System.Windows.Forms.Label()
         BetragLabel = New System.Windows.Forms.Label()
@@ -375,13 +379,17 @@ Partial Class Start
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DokumenteDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DokumenteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
         CType(Me.AnlagenSQLDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlDokButton.SuspendLayout()
         CType(Me.AnschriftenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnschriftenBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        CType(Me.VorgaengeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.AktenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MandantBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel19.SuspendLayout()
@@ -415,13 +423,9 @@ Partial Class Start
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.AblageBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AktenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DokumenteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MandantBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SqlVorgangAkteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StatusBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TypBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VorgaengeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VorlagenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.WiedervorlageBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnlagenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1008,9 +1012,12 @@ Partial Class Start
         Me.DokumenteDataGridView.AllowUserToDeleteRows = False
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
         Me.DokumenteDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.DokumenteDataGridView.AutoGenerateColumns = False
         Me.DokumenteDataGridView.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DokumenteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DokumenteDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn3, Me.Dokument, Me.Betreff, Me.DokDatum})
         Me.TableLayoutPanel1.SetColumnSpan(Me.DokumenteDataGridView, 2)
+        Me.DokumenteDataGridView.DataSource = Me.DokumenteBindingSource
         Me.DokumenteDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DokumenteDataGridView.Location = New System.Drawing.Point(353, 78)
         Me.DokumenteDataGridView.MultiSelect = False
@@ -1022,6 +1029,41 @@ Partial Class Start
         Me.DokumenteDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DokumenteDataGridView.Size = New System.Drawing.Size(372, 369)
         Me.DokumenteDataGridView.TabIndex = 36
+        '
+        'IdDataGridViewTextBoxColumn3
+        '
+        Me.IdDataGridViewTextBoxColumn3.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn3.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn3.Name = "IdDataGridViewTextBoxColumn3"
+        Me.IdDataGridViewTextBoxColumn3.Visible = False
+        '
+        'Dokument
+        '
+        Me.Dokument.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.Dokument.DataPropertyName = "Dokument"
+        Me.Dokument.HeaderText = "Dokument"
+        Me.Dokument.Name = "Dokument"
+        Me.Dokument.Width = 81
+        '
+        'Betreff
+        '
+        Me.Betreff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Betreff.DataPropertyName = "Betreff"
+        Me.Betreff.HeaderText = "Betreff"
+        Me.Betreff.Name = "Betreff"
+        '
+        'DokDatum
+        '
+        Me.DokDatum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.DokDatum.DataPropertyName = "DokDatum"
+        Me.DokDatum.HeaderText = "Datum"
+        Me.DokDatum.Name = "DokDatum"
+        Me.DokDatum.Width = 63
+        '
+        'DokumenteBindingSource
+        '
+        Me.DokumenteBindingSource.DataMember = "Dokumente"
+        Me.DokumenteBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
         'Panel5
         '
@@ -1150,6 +1192,7 @@ Partial Class Start
         '
         'DokDatumTextBox
         '
+        Me.DokDatumTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "DokDatum", True))
         Me.DokDatumTextBox.Location = New System.Drawing.Point(110, 174)
         Me.DokDatumTextBox.Name = "DokDatumTextBox"
         Me.DokDatumTextBox.ReadOnly = True
@@ -1158,6 +1201,7 @@ Partial Class Start
         '
         'DokumentTextBox
         '
+        Me.DokumentTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "Dokument", True))
         Me.DokumentTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DokumentTextBox.Location = New System.Drawing.Point(110, 5)
         Me.DokumentTextBox.Name = "DokumentTextBox"
@@ -1167,6 +1211,7 @@ Partial Class Start
         '
         'BetreffTextBox
         '
+        Me.BetreffTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "Betreff", True))
         Me.BetreffTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BetreffTextBox.Location = New System.Drawing.Point(110, 31)
         Me.BetreffTextBox.Name = "BetreffTextBox"
@@ -1176,6 +1221,7 @@ Partial Class Start
         '
         'BetragTextBox
         '
+        Me.BetragTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "Betrag", True))
         Me.BetragTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BetragTextBox.Location = New System.Drawing.Point(110, 62)
         Me.BetragTextBox.Name = "BetragTextBox"
@@ -1215,6 +1261,7 @@ Partial Class Start
         '
         'KommentarTextBox
         '
+        Me.KommentarTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "Kommentar", True))
         Me.KommentarTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KommentarTextBox.Location = New System.Drawing.Point(110, 203)
         Me.KommentarTextBox.Multiline = True
@@ -1225,6 +1272,7 @@ Partial Class Start
         '
         'AblageTextBox
         '
+        Me.AblageTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "Ablage", True))
         Me.AblageTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AblageTextBox.Location = New System.Drawing.Point(287, 85)
         Me.AblageTextBox.Name = "AblageTextBox"
@@ -1234,6 +1282,7 @@ Partial Class Start
         '
         'TypTextBox
         '
+        Me.TypTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "Typ", True))
         Me.TypTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TypTextBox.Location = New System.Drawing.Point(287, 59)
         Me.TypTextBox.Name = "TypTextBox"
@@ -1243,6 +1292,7 @@ Partial Class Start
         '
         'StatusTextBox
         '
+        Me.StatusTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "Status", True))
         Me.StatusTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StatusTextBox.Location = New System.Drawing.Point(110, 88)
         Me.StatusTextBox.Name = "StatusTextBox"
@@ -1252,6 +1302,7 @@ Partial Class Start
         '
         'DokNameTextBox
         '
+        Me.DokNameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "DokName", True))
         Me.DokNameTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DokNameTextBox.Location = New System.Drawing.Point(288, 174)
         Me.DokNameTextBox.Name = "DokNameTextBox"
@@ -1261,6 +1312,7 @@ Partial Class Start
         '
         'BearbVermerkTextBox
         '
+        Me.BearbVermerkTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DokumenteBindingSource, "BearbVermerk", True))
         Me.BearbVermerkTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BearbVermerkTextBox.Location = New System.Drawing.Point(109, 255)
         Me.BearbVermerkTextBox.Name = "BearbVermerkTextBox"
@@ -1295,13 +1347,20 @@ Partial Class Start
         '
         'BeendetTextBox
         '
+        Me.BeendetTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VorgaengeBindingSource, "Beendet", True))
         Me.BeendetTextBox.Location = New System.Drawing.Point(3, 225)
         Me.BeendetTextBox.Name = "BeendetTextBox"
         Me.BeendetTextBox.Size = New System.Drawing.Size(154, 20)
         Me.BeendetTextBox.TabIndex = 19
         '
+        'VorgaengeBindingSource
+        '
+        Me.VorgaengeBindingSource.DataMember = "Vorgaenge"
+        Me.VorgaengeBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
         'BegonnenTextBox
         '
+        Me.BegonnenTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VorgaengeBindingSource, "Begonnen", True))
         Me.BegonnenTextBox.Location = New System.Drawing.Point(3, 186)
         Me.BegonnenTextBox.Name = "BegonnenTextBox"
         Me.BegonnenTextBox.Size = New System.Drawing.Size(154, 20)
@@ -1309,6 +1368,7 @@ Partial Class Start
         '
         'BeschreibungTextBox1
         '
+        Me.BeschreibungTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VorgaengeBindingSource, "Beschreibung", True))
         Me.BeschreibungTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BeschreibungTextBox1.Location = New System.Drawing.Point(3, 65)
         Me.BeschreibungTextBox1.Multiline = True
@@ -1318,6 +1378,7 @@ Partial Class Start
         '
         'IdTextBox1
         '
+        Me.IdTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VorgaengeBindingSource, "id", True))
         Me.IdTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.IdTextBox1.Location = New System.Drawing.Point(3, 20)
         Me.IdTextBox1.Name = "IdTextBox1"
@@ -1326,6 +1387,7 @@ Partial Class Start
         '
         'ArchivCheckBox1
         '
+        Me.ArchivCheckBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VorgaengeBindingSource, "Archiv", True))
         Me.ArchivCheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ArchivCheckBox1.Location = New System.Drawing.Point(64, 249)
         Me.ArchivCheckBox1.Name = "ArchivCheckBox1"
@@ -1335,6 +1397,7 @@ Partial Class Start
         '
         'VorgangTextBox
         '
+        Me.VorgangTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VorgaengeBindingSource, "Vorgang", True))
         Me.VorgangTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.VorgangTextBox.Location = New System.Drawing.Point(44, 20)
         Me.VorgangTextBox.Name = "VorgangTextBox"
@@ -1343,6 +1406,7 @@ Partial Class Start
         '
         'HinweiseTextBox
         '
+        Me.HinweiseTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VorgaengeBindingSource, "Hinweise", True))
         Me.HinweiseTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HinweiseTextBox.Location = New System.Drawing.Point(3, 140)
         Me.HinweiseTextBox.Name = "HinweiseTextBox"
@@ -1376,13 +1440,20 @@ Partial Class Start
         '
         'ArchiviertTextBox
         '
+        Me.ArchiviertTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AktenBindingSource, "Archiviert", True))
         Me.ArchiviertTextBox.Location = New System.Drawing.Point(4, 225)
         Me.ArchiviertTextBox.Name = "ArchiviertTextBox"
         Me.ArchiviertTextBox.Size = New System.Drawing.Size(151, 20)
         Me.ArchiviertTextBox.TabIndex = 17
         '
+        'AktenBindingSource
+        '
+        Me.AktenBindingSource.DataMember = "Akten"
+        Me.AktenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
         'AngelegtTextBox
         '
+        Me.AngelegtTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AktenBindingSource, "Angelegt", True))
         Me.AngelegtTextBox.Location = New System.Drawing.Point(4, 186)
         Me.AngelegtTextBox.Name = "AngelegtTextBox"
         Me.AngelegtTextBox.Size = New System.Drawing.Size(162, 20)
@@ -1390,13 +1461,20 @@ Partial Class Start
         '
         'MandantTextBox1
         '
+        Me.MandantTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MandantBindingSource, "Mandant", True))
         Me.MandantTextBox1.Location = New System.Drawing.Point(4, 20)
         Me.MandantTextBox1.Name = "MandantTextBox1"
         Me.MandantTextBox1.Size = New System.Drawing.Size(162, 20)
         Me.MandantTextBox1.TabIndex = 15
         '
+        'MandantBindingSource
+        '
+        Me.MandantBindingSource.DataMember = "Mandant"
+        Me.MandantBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
+        '
         'BeschreibungTextBox
         '
+        Me.BeschreibungTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AktenBindingSource, "Beschreibung", True))
         Me.BeschreibungTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BeschreibungTextBox.Location = New System.Drawing.Point(4, 108)
         Me.BeschreibungTextBox.Multiline = True
@@ -1406,6 +1484,7 @@ Partial Class Start
         '
         'IdTextBox
         '
+        Me.IdTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AktenBindingSource, "id", True))
         Me.IdTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.IdTextBox.Location = New System.Drawing.Point(4, 65)
         Me.IdTextBox.Name = "IdTextBox"
@@ -1414,6 +1493,7 @@ Partial Class Start
         '
         'ArchivCheckBox
         '
+        Me.ArchivCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AktenBindingSource, "Archiv", True))
         Me.ArchivCheckBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ArchivCheckBox.Location = New System.Drawing.Point(64, 243)
         Me.ArchivCheckBox.Name = "ArchivCheckBox"
@@ -1423,6 +1503,7 @@ Partial Class Start
         '
         'AkteTextBox
         '
+        Me.AkteTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AktenBindingSource, "Akte", True))
         Me.AkteTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AkteTextBox.Location = New System.Drawing.Point(51, 65)
         Me.AkteTextBox.Name = "AkteTextBox"
@@ -2573,16 +2654,9 @@ Partial Class Start
         '
         'OptionenToolStripMenuItem
         '
-        Me.OptionenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem})
         Me.OptionenToolStripMenuItem.Name = "OptionenToolStripMenuItem"
         Me.OptionenToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.OptionenToolStripMenuItem.Text = "&Optionen"
-        '
-        'SettingsToolStripMenuItem
-        '
-        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
-        Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'AnschriftenAusDokÜbernehmenToolStripMenuItem
         '
@@ -2736,7 +2810,7 @@ Partial Class Start
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonExit, Me.ToolStripButton9, Me.ToolStripSeparator14, Me.ToolStripButtonScan, Me.ToolStripSeparator13, Me.ToolStripButton12, Me.ToolStripButtonScanInput, Me.ToolStripButton14, Me.ToolStripSeparator1, Me.ToolStripButtonMandanten, Me.ToolStripButtonAkten, Me.ToolStripButtonVorgaenge, Me.ToolStripButtonDokumente, Me.ToolStripLabel2, Me.ToolStripSeparator11, Me.ToolStripButtonWv, Me.ToolStripButtonNoteNeu, Me.ToolStripButton1, Me.ToolStripButtonVorlagen, Me.ToolStripSeparator15, Me.ToolStripButtonDatSuche, Me.ToolStripButtonSchnellSuche, Me.ToolStripSeparator8, Me.ToolStripButtonDelDoc})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(870, 51)
+        Me.ToolStrip1.Size = New System.Drawing.Size(839, 51)
         Me.ToolStrip1.TabIndex = 8
         '
         'ToolStripButtonExit
@@ -3019,21 +3093,6 @@ Partial Class Start
         '
         Me.WiedervorlageTableAdapter.ClearBeforeFill = True
         '
-        'AktenBindingSource
-        '
-        Me.AktenBindingSource.DataMember = "Akten"
-        Me.AktenBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'DokumenteBindingSource
-        '
-        Me.DokumenteBindingSource.DataMember = "Dokumente"
-        Me.DokumenteBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'MandantBindingSource
-        '
-        Me.MandantBindingSource.DataMember = "Mandant"
-        Me.MandantBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
         'SqlVorgangAkteBindingSource
         '
         Me.SqlVorgangAkteBindingSource.DataMember = "sqlVorgangAkte"
@@ -3052,11 +3111,6 @@ Partial Class Start
         '
         Me.TypBindingSource.DataMember = "Typ"
         Me.TypBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
-        '
-        'VorgaengeBindingSource
-        '
-        Me.VorgaengeBindingSource.DataMember = "Vorgaenge"
-        Me.VorgaengeBindingSource.DataSource = Me._FreeDMS_StartDBDataSet
         '
         'VorlagenBindingSource
         '
@@ -3088,6 +3142,9 @@ Partial Class Start
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "document.png")
         '
+        'BGWRefresh
+        '
+        '
         'Start
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3117,6 +3174,7 @@ Partial Class Start
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DokumenteDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DokumenteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         CType(Me.AnlagenSQLDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3125,8 +3183,11 @@ Partial Class Start
         CType(Me.AnschriftenBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.VorgaengeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.AktenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MandantBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel6.ResumeLayout(False)
@@ -3175,13 +3236,9 @@ Partial Class Start
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         CType(Me.AblageBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AktenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DokumenteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MandantBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SqlVorgangAkteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StatusBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TypBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VorgaengeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VorlagenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.WiedervorlageBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnlagenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3364,7 +3421,6 @@ Partial Class Start
     Friend WithEvents ExtrasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AnpassenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OptionenToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AnschriftenAusDokÜbernehmenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ImageNachPDFToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ArchivierteVorgängeToolStripMenuItem As ToolStripMenuItem
@@ -3468,4 +3524,9 @@ Partial Class Start
     Friend WithEvents AnschriftenBindingSource1 As BindingSource
     Friend WithEvents ImageList3 As ImageList
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents IdDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents Dokument As DataGridViewTextBoxColumn
+    Friend WithEvents Betreff As DataGridViewTextBoxColumn
+    Friend WithEvents DokDatum As DataGridViewTextBoxColumn
+    Friend WithEvents BGWRefresh As System.ComponentModel.BackgroundWorker
 End Class
