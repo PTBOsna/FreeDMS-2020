@@ -7,28 +7,28 @@ Imports Tesseract
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 Public Class dbHandling : Inherits Form
-    Public con As New OleDbConnection
+    Public Shared con As New OleDbConnection
     'DB-Standort-Daten
-    Public dbName As String 'Name der DB 
-    Public CurrDB As String ' Vollständiger Name mit Pfad
-    Public sAppPath As String = System.AppDomain.CurrentDomain.BaseDirectory & "Daten\"
+    Public Shared dbName As String 'Name der DB 
+    Public Shared CurrDB As String ' Vollständiger Name mit Pfad
+    Public Shared sAppPath As String = System.AppDomain.CurrentDomain.BaseDirectory & "Daten\"
 
 
     'Verwaltungsordner
-    Public ArchivOrdner As String
-    Public InputOrdner As String
-    Public MailInputOrdner As String
-    Public FlagArchivOrdner As Boolean
-    Public FlagInputOrdner As Boolean
-    Public SettingOutlookArchiv As String
-    Public FlagMailInputOrdner As Boolean
-    Public StartMandant As String
-    Public FlagStartMandant As Boolean
-    Public FlagAppPath As Boolean
-    Public StEmpfaenger As String
-    Public FlagStEmpfaenger As Boolean
-    Public FlagOutlook As Boolean = False
-    Public mailAbrufStart As Boolean = False
+    Public Shared ArchivOrdner As String
+    Public Shared InputOrdner As String
+    Public Shared MailInputOrdner As String
+    Public Shared FlagArchivOrdner As Boolean
+    Public Shared FlagInputOrdner As Boolean
+    Public Shared SettingOutlookArchiv As String
+    Public Shared FlagMailInputOrdner As Boolean
+    Public Shared StartMandant As String
+    Public Shared FlagStartMandant As Boolean
+    Public Shared FlagAppPath As Boolean
+    Public Shared StEmpfaenger As String
+    Public Shared FlagStEmpfaenger As Boolean
+    Public Shared FlagOutlook As Boolean = False
+    Public Shared mailAbrufStart As Boolean = False
     Dim OutlookNutzen As String = "nein"
     Dim MailAbruf As String = "nein"
 
@@ -57,8 +57,10 @@ Public Class dbHandling : Inherits Form
                 MyFileDialog("Es sind mehrere Dateien vorhanden! Bitte die Start-DB auswählen!")
             Case Else
                 MsgBox("Keine Datei vorhanden. Anwendung wird geschlossen")
+                Return False
                 Close()
         End Select
+        Return True
     End Function
     ''' <summary>
     ''' FileDialog für DB-Auswahl

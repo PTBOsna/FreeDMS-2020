@@ -3,6 +3,9 @@ Imports OpenPop.Mime
 Imports System.Text.RegularExpressions
 Imports Message = OpenPop.Mime.Message
 Imports System.IO
+Imports System.ComponentModel
+Imports FreeDMS_2020.dbHandling
+
 Public Class Start
 
     ''' <summary>
@@ -43,11 +46,9 @@ Public Class Start
     ''' <param name="e"></param>
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
-
         Cursor.Current = Cursors.WaitCursor
-        dbH.CurrDB = My.Settings.LastDB
-        MsgBox(dbH.CurrDB)
+        CurrDB = My.Settings.LastDB
+        MsgBox(CurrDB)
         'testen ob Access installiert ist 
         If Not dbH.CheckForSoftwareInstallation("access") = True Then
             Me.TopMost = True
@@ -69,9 +70,9 @@ Public Class Start
         dbH.XMLReader()
         dbH.ChekDB()
         dbH.ChkSettings()
-        Me.Text = "FreeDMS - Aktuelle DB: " & dbH.CurrDB
+        Me.Text = "FreeDMS - Aktuelle DB: " & CurrDB
         'Setting laden:
-        Dim myDB As String = Path.GetFileNameWithoutExtension(dbH.CurrDB)
+        Dim myDB As String = Path.GetFileNameWithoutExtension(CurrDB)
         If Not My.Computer.FileSystem.FileExists(System.AppDomain.CurrentDomain.BaseDirectory & "Daten\" & myDB & ".xml") Then
             dbH.XMLWriter()
         End If
@@ -137,7 +138,7 @@ Public Class Start
         PictureBox1.Image = My.Resources.FreeDMS_Logo
         cbMaxMails.SelectedIndex = 2
         lblStatusMsg.Visible = False
-        If dbH.mailAbrufStart = True Then
+        If mailAbrufStart = True Then
             UserTextBox1.Text = user
             HostTextBox1.Text = host
             TxtCounter.Visible = True
@@ -145,7 +146,7 @@ Public Class Start
         End If
 
 
-        currDoc.Mandant = CInt(dbH.StartMandant)
+        currDoc.Mandant = CInt(StartMandant)
         NotizBindingSource1.Filter = "id=0"
         LoadAll()
         LoadLvDok(LvScanInput)
@@ -162,21 +163,21 @@ Public Class Start
     ''' </summary>
     Private Sub LoadAll()
 
-        dbH.LoadDB(dbH.CurrDB)
-        MandantTableAdapter.Connection = dbH.con
-        DokumenteTableAdapter.Connection = dbH.con
-        DokumenteSQLTableAdapter.Connection = dbH.con
-        VorgaengeTableAdapter.Connection = dbH.con
-        AktenTableAdapter.Connection = dbH.con
-        AnschriftenTableAdapter.Connection = dbH.con
-        TypTableAdapter.Connection = dbH.con
-        StatusTableAdapter.Connection = dbH.con
-        AblageTableAdapter.Connection = dbH.con
-        NotizTableAdapter.Connection = dbH.con
-        SqlVorgangAkteTableAdapter.Connection = dbH.con
-        WiedervorlageTableAdapter.Connection = dbH.con
-        VorlagenTableAdapter.Connection = dbH.con
-        AnlagenSQLTableAdapter.Connection = dbH.con
+        dbH.LoadDB(CurrDB)
+        MandantTableAdapter.Connection = con
+        DokumenteTableAdapter.Connection = con
+        DokumenteSQLTableAdapter.Connection = con
+        VorgaengeTableAdapter.Connection = con
+        AktenTableAdapter.Connection = con
+        AnschriftenTableAdapter.Connection = con
+        TypTableAdapter.Connection = con
+        StatusTableAdapter.Connection = con
+        AblageTableAdapter.Connection = con
+        NotizTableAdapter.Connection = con
+        SqlVorgangAkteTableAdapter.Connection = con
+        WiedervorlageTableAdapter.Connection = con
+        VorlagenTableAdapter.Connection = con
+        AnlagenSQLTableAdapter.Connection = con
 
         MandantTableAdapter.Fill(_FreeDMS_StartDBDataSet.Mandant)
         DokumenteTableAdapter.Fill(Me._FreeDMS_StartDBDataSet.Dokumente)
@@ -244,7 +245,7 @@ Public Class Start
                 .LargeImageList = ImageList1
                 ' Dateien ermitteln
                 Try
-                    locDirInfo = New DirectoryInfo(dbH.InputOrdner)
+                    locDirInfo = New DirectoryInfo(InputOrdner)
                 Catch ex As Exception
                     MsgBox("Ordner nicht gefunden! Bitte die Settings überprüfen!")
                     Exit Sub
@@ -284,7 +285,7 @@ Public Class Start
         If AnzahlFiles = 0 Then
             LbEingangsKorb.Text = "Der Eingangskorb ist leer."
         Else
-            LbEingangsKorb.Text = "Eingangskorb (" & dbH.InputOrdner & ") mit " & AnzahlFiles & " Eingängen"
+            LbEingangsKorb.Text = "Eingangskorb (" & InputOrdner & ") mit " & AnzahlFiles & " Eingängen"
         End If
     End Sub
     ''' <summary>
@@ -312,6 +313,19 @@ Public Class Start
         'Aktuelle Settings zurückschreiben
 
         dbH.XMLWriter()
+    End Sub
+    ''' <summary>
+    ''' DataGridViews auf letzze Zeile setzen
+    ''' </summary>
+    Private Sub SetLastDGVRow()
+        'DGVs auf letzte Zeile fokussieren
+        Dim row As Integer = DokumenteSQLBindingSource.Count - 1
+        If DokumenteSQLDataGridView.Rows.Count > 1 Then
+            DokumenteSQLDataGridView.FirstDisplayedScrollingRowIndex = row
+            DokumenteSQLDataGridView.CurrentCell = DokumenteSQLDataGridView.Rows(row).Cells(0)
+            DokumenteSQLDataGridView.Rows(row).Selected = True
+        End If
+
     End Sub
     ''' <summary>
     ''' TreeView Mandant-Akte-Vorgang füllen
@@ -541,6 +555,67 @@ Public Class Start
         lbVorgang.Text = txtVorgang
         lbAz.Text = "Aktenzeichen " & az
     End Sub
+
+    ''' <summary>
+    ''' Aufruf Detailansicht Dokumente aus DokumenteDataGridView
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub DokumenteDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DokumenteDataGridView.CellClick
+        DokShow()
+    End Sub
+    Private Sub DokumenteDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DokumenteDataGridView.CellDoubleClick
+        '  DocEdit(DirectCast(DokumenteBindingSource.Current, DataRowView).Item("id").ToString)
+    End Sub
+    Private Sub ArchivierteVorgängeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArchivierteVorgängeToolStripMenuItem.Click
+        'Dim f As New VorgaengeArchiv
+        'f.AktenBindingSource.DataSource = _FreeDMS_StartDBDataSet
+        'f.AktenBindingSource1.DataSource = _FreeDMS_StartDBDataSet
+        'f.VorgaengeBindingSource.DataSource = _FreeDMS_StartDBDataSet
+        'f.ShowDialog()
+        'If _FreeDMS_StartDBDataSet.HasChanges Then Update()
+    End Sub
+    Private Sub ToolStripButton9_Click(sender As Object, e As EventArgs) Handles ToolStripButton9.Click
+        UpdateAll()
+    End Sub
+    Private Sub UpdateAll()
+        If Not DokumenteBindingSource.Current Is Nothing OrElse DokumenteBindingSource.Count > 0 Then
+            Dim rwAkten = DirectCast(DirectCast(DokumenteBindingSource.Current, DataRowView).Row, _FreeDMS_StartDBDataSet.DokumenteRow)
+            With currDoc
+                .Mandant = CInt(rwAkten.Mandant)
+                .Akte = CInt(rwAkten.Akte)
+                .Vorgang = CInt(rwAkten.Vorgang)
+                .Dokument = rwAkten.id
+            End With
+            DokumenteDataGridView.DataSource = Nothing
+
+            ' Else
+            'MsgBox("Bitte zunächst einen Vorgang auswählen!")
+        End If
+        StartRefresh()
+    End Sub
+    Public Sub StartRefresh()
+        'SetCurrDoc()
+
+        BGWRefresh.RunWorkerAsync()
+        ProgressBar1.Visible = True
+    End Sub
+
+    Private Sub BGWRefresh_DoWork(sender As Object, e As DoWorkEventArgs) Handles BGWRefresh.DoWork
+        SaveAll()
+        LoadAll()
+
+    End Sub
+
+    Private Sub BGWRefresh_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BGWRefresh.RunWorkerCompleted
+        ProgressBar1.Visible = False
+        LoadLvDok(LvScanInput)
+
+        DokumenteDataGridView.DataSource = DokumenteBindingSource
+        FillTreeView()
+        SetCurrDoc()
+
+    End Sub
 #End Region
 
 #Region "Mails"
@@ -575,9 +650,9 @@ Public Class Start
         allMessages.Clear()
         SelAttachments1.Clear()
         '  Me.Cursor = Cursors.WaitCursor
-        Dim CurrPath As String = dbH.sAppPath & user & "-uids.txt"
+        Dim CurrPath As String = sAppPath & user & "-uids.txt"
         Dim seenUids As List(Of String) = TXT2ListOfString(CurrPath)
-        Dim usedPath As String = dbH.sAppPath & user & "-useduids.txt"
+        Dim usedPath As String = sAppPath & user & "-useduids.txt"
         Dim usedUids As List(Of String) = TXT2ListOfString(usedPath)
         Dim pop3Client As Pop3Client
         pop3Client = New Pop3Client()
@@ -714,6 +789,61 @@ Public Class Start
 
 
 #End Region
+#Region "Handling"
+
+    ''' <summary>
+    ''' Die mit TreeView ausgewälten Daten anzeigen
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
+        Dim sItem(2) As String
+        Dim lbVorhanden As Boolean = True
+        sItem = Split(TreeView1.SelectedNode.Tag.ToString, ";")
+        TreeView1.SelectedNode.Expand()
+        'MsgBox(TreeView1.SelectedNode.Name)
+        Select Case sItem(0)
+            Case "r" 'Alles (Root)
+                Me.DokumenteBindingSource.Filter = "ID > 0"
+                GetMandantAkteVorgang()
+
+            Case "m" 'Mandante
+                Me.DokumenteBindingSource.Filter = "Mandant=" & sItem(1)
+
+                If DokumenteBindingSource.Count > 0 Then
+
+                    GetMandantAkteVorgang()
+                Else
+                    lbVorhanden = False
+                End If
+
+            Case "a" 'Akte
+                Me.DokumenteBindingSource.Filter = "Akte=" & sItem(1)
+                If DokumenteBindingSource.Count > 0 Then
+                    GetMandantAkteVorgang()
+
+                Else
+                    lbVorhanden = False
+                End If
+
+            Case "v" 'Vorgang
+                Me.DokumenteBindingSource.Filter = "Vorgang=" & sItem(1)
+                If DokumenteBindingSource.Count > 0 Then
+
+                    GetMandantAkteVorgang()
+                Else
+                    lbVorhanden = False
+                End If
+
+                If lbVorhanden = False Then
+                    MsgBox("Kein Vorgang Vorhanden!")
+                End If
+
+        End Select
+        SetLastDGVRow()
+
+    End Sub
+#End Region
 #Region "Buttons"
     ''' <summary>
     ''' Programm beenden
@@ -723,10 +853,22 @@ Public Class Start
     Private Sub ToolStripButtonExit_Click(sender As Object, e As EventArgs) Handles ToolStripButtonExit.Click, BeendenToolStripMenuItem.Click
         lblClose = True
         SaveAll()
-        My.Settings.LastDB = dbH.CurrDB
+        My.Settings.LastDB = CurrDB
         Application.Exit()
         ' Close()
     End Sub
+
+    Private Sub OptionenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionenToolStripMenuItem.Click
+        Dim f As New Settings
+        f.MandantBindingSource.DataSource = _FreeDMS_StartDBDataSet
+        f.AnschriftenBindingSource.DataSource = _FreeDMS_StartDBDataSet
+        f.ShowDialog()
+        If _FreeDMS_StartDBDataSet.HasChanges Then SaveAll()
+    End Sub
+
+
+
+
 
 #End Region
 End Class
