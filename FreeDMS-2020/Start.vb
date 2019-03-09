@@ -152,7 +152,7 @@ Public Class Start
         LoadLvDok(LvScanInput)
         LoadLvDok(LVMailInput)
         FillTreeView()
-        'FindTreeNode(StartMandant)
+        FindTreeNode(StartMandant)
         ''Beim Start kein Dokument anzeigen
         'DokumenteBindingSource.Filter = "id=0"
         Me.WindowState = FormWindowState.Maximized
